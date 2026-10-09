@@ -1,21 +1,79 @@
-MIT License
+ITOL RECRUIT PROPRIETARY SOFTWARE LICENSE
 
-Copyright (c) 2026 ITOL-Recruitment
+Copyright (c) 2026 Darren van der Velde
+Copyright (c) 2026 ITOL Recruit
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+All rights reserved.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. OWNERSHIP
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This repository and its contents, including original source code, documentation, templates, designs, and other materials, are protected by applicable copyright and intellectual property laws.
+
+Ownership of each component remains subject to applicable employment agreements, intellectual property assignments, third-party rights, and other relevant agreements.
+
+2. PERMITTED ACCESS
+
+Access to this repository is granted only to individuals authorised by the applicable rights holder or ITOL Recruit.
+
+Authorised access permits use of the materials solely for the purposes and within the scope approved by the applicable rights holder or ITOL Recruit.
+
+3. RESTRICTIONS
+
+Unless expressly authorised in writing by the applicable rights holder, you may not:
+
+* Copy or redistribute the repository or its contents outside the permitted scope of access.
+* Publish or disclose confidential or proprietary materials.
+* Sell, sublicense, or commercially distribute the software or materials.
+* Reuse or incorporate proprietary materials into another product or project.
+* Remove or alter copyright, ownership, or confidentiality notices.
+* Grant access to unauthorised individuals.
+* Claim ownership of materials belonging to another rights holder.
+
+4. MODIFICATIONS
+
+Any permission to modify, adapt, or create derivative works must be granted by the applicable rights holder or an authorised representative.
+
+Permission to access the repository does not, by itself, grant permission to distribute modifications or derivative works.
+
+5. THIRD-PARTY MATERIALS
+
+Third-party software, libraries, content, and other materials may be subject to separate licences and ownership terms.
+
+Nothing in this licence overrides applicable third-party licence obligations or grants rights that the licensor does not possess.
+
+6. CONFIDENTIALITY AND SECURITY
+
+Users must comply with applicable confidentiality obligations, company policies, access controls, and data protection requirements.
+
+Users must not disclose credentials, personal information, confidential business information, or other protected information without appropriate authorisation.
+
+7. NO TRANSFER OF OWNERSHIP
+
+Except for the limited permissions expressly granted in writing, no ownership rights or intellectual property licences are transferred under this licence.
+
+8. DISCLAIMER
+
+To the extent permitted by applicable law, the materials are provided "AS IS", without warranties or guarantees of any kind, whether express or implied.
+
+9. TERMINATION
+
+Permissions granted under this licence may be suspended or terminated in accordance with applicable agreements, company policies, and applicable law.
+
+Upon termination, the user must cease any use that is no longer authorised and comply with applicable requirements concerning copies and confidential materials.
+
+10. GOVERNING LAW
+
+The interpretation and enforcement of this licence are subject to applicable law and any valid governing-law provisions in relevant agreements.
+
+11. PERMISSIONS AND EXCEPTIONS
+
+Any exception to these restrictions must be expressly authorised in writing by the applicable rights holder or an authorised representative with appropriate authority.
+
+For permissions or licensing enquiries, contact the relevant ITOL Recruit representative.
+
+END OF LICENSE
+
+Copyright (c) 2026 Darren van der Velde
+Copyright (c) 2026 ITOL Recruit
+
+All rights reserved.
