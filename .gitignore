@@ -1,1 +1,12 @@
 node_modules
+dist
+dist-ssr
+.env
+.env.*
+!.env.example
+*.local
+.DS_Store
+*.log
+npm-debug.log*
+.vite
+.cache
