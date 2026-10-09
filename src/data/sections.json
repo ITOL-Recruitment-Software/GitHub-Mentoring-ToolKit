@@ -1,136 +1,44 @@
 {
   "sections": [
-    {
-      "id": "home",
-      "title": "Home",
-      "icon": "Home",
-      "path": "/"
-    },
-    {
-      "id": "intro",
-      "title": "Git & GitHub Intro",
-      "icon": "GitBranch",
-      "path": "/intro"
-    },
-    {
-      "id": "repo-structure",
-      "title": "Repository Structure",
-      "icon": "FolderTree",
-      "path": "/repo-structure"
-    },
-    {
-      "id": "setup",
-      "title": "Setting Up Git",
-      "icon": "Settings",
-      "path": "/setup"
-    },
-    {
-      "id": "create-repo",
-      "title": "Creating a Repository",
-      "icon": "PlusCircle",
-      "path": "/create-repo"
-    },
-    {
-      "id": "status",
-      "title": "Git Status",
-      "icon": "Activity",
-      "path": "/status"
-    },
-    {
-      "id": "add-commit",
-      "title": "Add & Commit",
-      "icon": "GitCommit",
-      "path": "/add-commit"
-    },
-    {
-      "id": "commit-messages",
-      "title": "Commit Messages",
-      "icon": "MessageSquare",
-      "path": "/commit-messages"
-    },
-    {
-      "id": "branching",
-      "title": "Branching",
-      "icon": "GitBranch",
-      "path": "/branching"
-    },
-    {
-      "id": "feature-branches",
-      "title": "Feature Branches",
-      "icon": "GitPullRequest",
-      "path": "/feature-branches"
-    },
-    {
-      "id": "feature-workflow",
-      "title": "Feature Workflow",
-      "icon": "Workflow",
-      "path": "/feature-workflow"
-    },
-    {
-      "id": "pull-requests",
-      "title": "Pull Requests",
-      "icon": "GitPullRequestArrow",
-      "path": "/pull-requests"
-    },
-    {
-      "id": "merge",
-      "title": "Git Merge",
-      "icon": "GitMerge",
-      "path": "/merge"
-    },
-    {
-      "id": "conflicts",
-      "title": "Merge Conflicts",
-      "icon": "AlertTriangle",
-      "path": "/conflicts"
-    },
-    {
-      "id": "collaboration",
-      "title": "Collaboration",
-      "icon": "Users",
-      "path": "/collaboration"
-    },
-    {
-      "id": "readme",
-      "title": "README Training",
-      "icon": "FileText",
-      "path": "/readme"
-    },
-    {
-      "id": "gitignore",
-      "title": ".gitignore",
-      "icon": "EyeOff",
-      "path": "/gitignore"
-    },
-    {
-      "id": "issues",
-      "title": "GitHub Issues",
-      "icon": "CircleDot",
-      "path": "/issues"
-    },
-    {
-      "id": "projects",
-      "title": "GitHub Projects",
-      "icon": "Kanban",
-      "path": "/projects"
-    },
-    {
-      "id": "actions",
-      "title": "GitHub Actions",
-      "icon": "Zap",
-      "path": "/actions"
-    },
-    {
-      "id": "mistakes",
-      "title": "Common Mistakes",
-      "icon": "AlertCircle",
-      "path": "/mistakes"
-    },
-    {
-      "id": "best-practices",
-      "title": "Best Practices",
-      "icon": "CheckCircle",
-      "path": "/best-practices"
-    }
+    { "id": "home", "title": "Home", "icon": "Home", "path": "/", "group": "Start" },
+    { "id": "intro", "title": "Welcome & License", "icon": "BookOpen", "path": "/intro", "group": "Start" },
+    { "id": "ready-for-class", "title": "Getting Ready for Class", "icon": "ClipboardCheck", "path": "/ready-for-class", "group": "Start" },
+    { "id": "what-is-github", "title": "What is GitHub?", "icon": "Github", "path": "/what-is-github", "group": "Start" },
+    { "id": "github-flow", "title": "GitHub Flow", "icon": "Workflow", "path": "/github-flow", "group": "Start" },
+    { "id": "setup", "title": "Local Git Configuration", "icon": "Settings", "path": "/setup", "group": "Project 1 · Basics" },
+    { "id": "working-locally", "title": "Working Locally", "icon": "Monitor", "path": "/working-locally", "group": "Project 1 · Basics" },
+    { "id": "branching", "title": "Branching with Git", "icon": "GitBranch", "path": "/branching", "group": "Project 1 · Basics" },
+    { "id": "status", "title": "Git Status", "icon": "Activity", "path": "/status", "group": "Project 1 · Basics" },
+    { "id": "add-commit", "title": "Two-Stage Commit", "icon": "GitCommit", "path": "/add-commit", "group": "Project 1 · Basics" },
+    { "id": "commit-messages", "title": "Commit Messages", "icon": "MessageSquare", "path": "/commit-messages", "group": "Project 1 · Basics" },
+    { "id": "collaboration", "title": "Push & Collaborate", "icon": "Users", "path": "/collaboration", "group": "Project 1 · Basics" },
+    { "id": "pull-requests", "title": "Pull Requests", "icon": "GitPullRequestArrow", "path": "/pull-requests", "group": "Project 1 · Basics" },
+    { "id": "editing-on-github", "title": "Editing on GitHub", "icon": "Pencil", "path": "/editing-on-github", "group": "Project 1 · Basics" },
+    { "id": "merge", "title": "Merging Pull Requests", "icon": "GitMerge", "path": "/merge", "group": "Project 1 · Basics" },
+    { "id": "local-history", "title": "Local History (git log)", "icon": "History", "path": "/local-history", "group": "Project 1 · Basics" },
+    { "id": "aliases", "title": "Git Aliases", "icon": "Command", "path": "/aliases", "group": "Project 1 · Basics" },
+    { "id": "conflicts", "title": "Merge Conflicts", "icon": "AlertTriangle", "path": "/conflicts", "group": "Project 2 · Conflicts" },
+    { "id": "workflow-review", "title": "Workflow Review", "icon": "RefreshCw", "path": "/workflow-review", "group": "Project 3 · Games" },
+    { "id": "protected-branches", "title": "Protected Branches & CODEOWNERS", "icon": "Shield", "path": "/protected-branches", "group": "Project 3 · Games" },
+    { "id": "git-bisect", "title": "Git Bisect", "icon": "Search", "path": "/git-bisect", "group": "Project 3 · Games" },
+    { "id": "reverting", "title": "Reverting Commits", "icon": "Undo2", "path": "/reverting", "group": "Project 3 · Games" },
+    { "id": "helpful-commands", "title": "Helpful Git Commands", "icon": "Wrench", "path": "/helpful-commands", "group": "Project 3 · Games" },
+    { "id": "viewing-changes", "title": "Viewing Local Changes (diff)", "icon": "FileDiff", "path": "/viewing-changes", "group": "Project 3 · Games" },
+    { "id": "tags-releases", "title": "Tags & Releases", "icon": "Tag", "path": "/tags-releases", "group": "Project 3 · Games" },
+    { "id": "workflow-discussion", "title": "Workflow Discussion", "icon": "MessagesSquare", "path": "/workflow-discussion", "group": "Project 3 · Games" },
+    { "id": "local-repo", "title": "Create a Local Repo", "icon": "FolderPlus", "path": "/local-repo", "group": "Project 4 · Advanced" },
+    { "id": "fixing-commits", "title": "Fixing Commit Mistakes", "icon": "FilePen", "path": "/fixing-commits", "group": "Project 4 · Advanced" },
+    { "id": "git-reset", "title": "Rewriting History (reset)", "icon": "RotateCcw", "path": "/git-reset", "group": "Project 4 · Advanced" },
+    { "id": "cherry-pick", "title": "Cherry Picking", "icon": "GitCommitHorizontal", "path": "/cherry-pick", "group": "Project 4 · Advanced" },
+    { "id": "merge-strategies", "title": "Merge Strategies & Rebase", "icon": "GitCompare", "path": "/merge-strategies", "group": "Project 4 · Advanced" },
+    { "id": "readme", "title": "README.md", "icon": "FileText", "path": "/readme", "group": "Reference" },
+    { "id": "gitignore", "title": ".gitignore", "icon": "EyeOff", "path": "/gitignore", "group": "Reference" },
+    { "id": "issues", "title": "GitHub Issues", "icon": "CircleDot", "path": "/issues", "group": "Reference" },
+    { "id": "projects", "title": "GitHub Projects", "icon": "Kanban", "path": "/projects", "group": "Reference" },
+    { "id": "repo-structure", "title": "Repository Navigation", "icon": "FolderTree", "path": "/repo-structure", "group": "Reference" },
+    { "id": "actions", "title": "GitHub Actions", "icon": "Zap", "path": "/actions", "group": "Reference" },
+    { "id": "mistakes", "title": "Common Mistakes", "icon": "AlertCircle", "path": "/mistakes", "group": "Reference" },
+    { "id": "best-practices", "title": "Best Practices", "icon": "CheckCircle", "path": "/best-practices", "group": "Reference" },
+    { "id": "appendix", "title": "Appendix", "icon": "BookMarked", "path": "/appendix", "group": "Reference" }
   ]
 }
