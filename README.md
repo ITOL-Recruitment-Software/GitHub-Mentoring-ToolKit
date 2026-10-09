@@ -1,58 +1,100 @@
-# GitHub Mentor Guide
+# GitHub Mentoring ToolKit
 
-A professional visual training and presentation website for mentors to teach Git and GitHub workflows during student meetings.
+**A GitHub mentoring resource repository for authorised ITOL Recruitment Software development and mentoring activities.**
+
+## About
+
+| Property     | Details                                   |
+| ------------ | ----------------------------------------- |
+| Project Name | GitHub Mentoring ToolKit                  |
+| Organisation | ITOL Recruitment Software                 |
+| Maintainer   | Darren van der Velde                      |
+| Copyright    | © 2026                                    |
+| License      | ITOL Recruit Proprietary Software License |
 
 ## Purpose
 
-This is **not** a learning management system. It is a clean, developer-focused documentation site (GitHub Docs / freeCodeCamp style) that a mentor can open on a shared screen to explain:
+The GitHub Mentoring ToolKit repository provides a central location for maintaining resources, documentation, templates, and supporting materials related to GitHub mentoring.
 
-- How Git works
-- How GitHub works
-- Branches, commits, merges, conflicts
-- Pull Requests and team collaboration
-- Best practices and common mistakes
+The repository is intended to support consistent mentoring practices and help developers and learners understand GitHub workflows, repository management, project documentation, and collaborative development.
 
-## Tech Stack
+## Objectives
 
-- React 19 + Vite
-- TypeScript
-- Tailwind CSS v4
-- Framer Motion
-- Lucide React icons
-- React Router
+The toolkit is intended to support the following areas:
 
-## Project Structure
+* GitHub profile and repository improvement.
+* Repository documentation and README development.
+* Git fundamentals and version control workflows.
+* Issues, pull requests, branches, and code reviews.
+* Project organisation and roadmap planning.
+* Software development best practices.
+* Consistent mentoring documentation and resources.
 
-```
-git-github-mentor/
-├── public/
-│   └── settings.ini          # App settings (INI format)
-├── src/
-│   ├── components/           # Reusable UI (CodeBlock, Terminal, GitGraph, Sidebar…)
-│   ├── data/
-│   │   └── sections.json     # Navigation data (JSON)
-│   ├── pages/                # All teaching sections
-│   ├── App.tsx
-│   ├── index.css
-│   └── main.tsx
-├── package.json
-└── vite.config.ts
-```
+The exact contents and capabilities depend on the materials maintained in this repository.
 
-## Setup
+## Intended Audience
 
-```bash
-cd git-github-mentor
-npm install
-npm run dev
-```
+This repository is intended for authorised personnel involved in ITOL mentoring and software development activities, including:
 
-Open http://localhost:5173
+* GitHub mentors.
+* Developers.
+* Learners participating in mentoring.
+* Authorised internal contributors.
 
-## Settings
+## Recommended GitHub Workflow
 
-Configuration lives in `public/settings.ini`. Content structure is driven by `src/data/sections.json`.
+The following workflow is recommended when working on software projects supported by the toolkit.
+
+1. Create a GitHub issue describing the task or improvement.
+2. Create a dedicated branch for the work.
+3. Implement the changes in small, understandable commits.
+4. Test the changes and review the documentation.
+5. Open a pull request describing the implementation.
+6. Review and address feedback.
+7. Merge the approved pull request into the main branch.
+8. Update relevant documentation when necessary.
+
+## Repository Maintenance
+
+To keep the toolkit consistent and useful:
+
+* Keep documentation accurate and easy to understand.
+* Use clear file names and descriptive headings.
+* Review resources periodically.
+* Avoid committing credentials, API keys, or confidential information.
+* Follow the repository's access permissions and contribution procedures.
+* Document significant changes when appropriate.
+
+## Security and Confidentiality
+
+All contributors must protect confidential company information and personal information.
+
+Do not commit passwords, access tokens, API keys, private keys, session secrets, database credentials, or other sensitive information.
+
+Only authorised individuals should access or distribute restricted company resources.
+
+## Ownership
+
+This repository and its original materials are intended for authorised ITOL Recruitment Software activities.
+
+Ownership of the repository's contents is subject to applicable agreements, intellectual property rights, and the relevant rights of third-party content owners.
+
+Access to this repository does not automatically grant permission to copy, redistribute, publish, or commercially use its contents.
 
 ## License
 
-MIT — free for educational use.
+This repository is intended to be distributed under the ITOL Recruit Proprietary Software License.
+
+All rights reserved. Unauthorised copying, modification, distribution, publication, sublicensing, or commercial use is prohibited except where expressly permitted in writing by the applicable rights holder.
+
+Refer to the `LICENSE` file in the repository for the complete terms.
+
+## Maintainer
+
+**Darren van der Velde**
+
+ITOL Recruitment Software
+
+Copyright © 2026.
+
+All rights reserved.
