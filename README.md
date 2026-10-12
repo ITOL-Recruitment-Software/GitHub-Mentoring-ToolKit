@@ -1,7 +1,5 @@
 # GitHub Mentoring ToolKit
 
-<!--comment-->
-
 **A GitHub mentoring resource repository for authorised ITOL Recruitment Software development and mentoring activities.**
 
 ## About
