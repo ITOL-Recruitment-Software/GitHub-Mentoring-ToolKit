@@ -1,7 +1,5 @@
 import SectionLayout from '../components/SectionLayout'
 import CodeBlock from '../components/CodeBlock'
-import LivePractice from '../components/LivePractice'
-import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function Setup() {
   return (
@@ -44,37 +42,18 @@ export default function Setup() {
         />
       </section>
 
-      <LivePractice
-        variant="terminal"
-        title="Configure Git in the terminal"
-        subtitle="Type the real commands in order. This page uses Git Bash only — no GitHub UI."
-      >
-        <ol className="text-sm text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4 font-mono">
+      <div className="mt-10 pt-6 border-t border-[var(--color-github-border)]">
+        <p className="text-xs font-semibold tracking-wider text-[var(--color-github-accent)] mb-2">TRY IN FOOTER TERMINAL</p>
+        <p className="text-sm text-[var(--color-github-muted)] mb-3 leading-relaxed">
+          Use the Git Bash bar at the bottom of the screen (same session on every page):
+        </p>
+        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1">
           <li>git --version</li>
           <li>git config --global user.name &quot;Your Real Name&quot;</li>
           <li>git config --global user.email &quot;your@email.com&quot;</li>
           <li>git config --global --list</li>
         </ol>
-        <InteractiveTerminal
-          title="Git Bash – setup"
-          prompt="MINGW64:/c/Users/student$"
-          placeholder="Type a command…"
-          height="280px"
-          commandMap={{
-            'git --version': [{ type: 'output', text: 'git version 2.45.2.windows.1' }],
-            'git config --global --list': [
-              { type: 'output', text: 'user.name=Your Real Name' },
-              { type: 'output', text: 'user.email=your@email.com' },
-              { type: 'output', text: 'init.defaultBranch=main' },
-              { type: 'output', text: 'color.ui=auto' },
-            ],
-            'git config --list': [
-              { type: 'output', text: 'user.name=Your Real Name' },
-              { type: 'output', text: 'user.email=your@email.com' },
-            ],
-          }}
-        />
-      </LivePractice>
+      </div>
     </SectionLayout>
   )
 }
