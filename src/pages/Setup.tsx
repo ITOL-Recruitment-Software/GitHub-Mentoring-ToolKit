@@ -1,8 +1,30 @@
+import { useState } from 'react'
 import SectionLayout from '../components/SectionLayout'
 import Terminal from '../components/Terminal'
 import CodeBlock from '../components/CodeBlock'
+import LivePractice from '../components/LivePractice'
 
 export default function Setup() {
+  const [step, setStep] = useState(0)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [completed, setCompleted] = useState(false)
+
+  const reset = () => {
+    setStep(0)
+    setName('')
+    setEmail('')
+    setCompleted(false)
+  }
+
+  const next = () => {
+    if (step === 0 && name.trim()) setStep(1)
+    else if (step === 1 && email.trim()) {
+      setStep(2)
+      setCompleted(true)
+    }
+  }
+
   return (
     <SectionLayout
       title="Setting Up Git"
@@ -32,8 +54,7 @@ export default function Setup() {
       </p>
       <CodeBlock
         title="Global configuration"
-        code={`git config --global user.name "Your Name"
-git config --global user.email "email@example.com"`}
+        code={`git config --global user.name "Your Name"\ngit config --global user.email "email@example.com"`}
       />
 
       <div className="p-4 rounded-lg border border-[var(--color-github-yellow)]/40 bg-[#161b22] my-4">
@@ -46,35 +67,91 @@ git config --global user.email "email@example.com"`}
       </div>
 
       <h2 className="text-xl font-semibold mt-8">3. Useful extra settings</h2>
-      {/* Default Branch Code block */}
       <CodeBlock
         title="Default Branch name for new Repos"
-        code={`
-git config --global init.defaultBranch main
-      `}/>
-      {/* Change the emulator to a better color */}
-      <CodeBlock 
+        code={`git config --global init.defaultBranch main`}
+      />
+      <CodeBlock
         title="Better diff colors"
-        code={`
-git config --global color.ui auto
-        `}/>
-      {/* Simple Pull Config setup for making it rebase to false */}
+        code={`git config --global color.ui auto`}
+      />
       <CodeBlock
         title="Simple pull Behavior"
-        code={`
-git config --global pull.rebase false
-        `}/>
-    <SectionLayout
-          title="Live Practice Demo"
-          subtitle="Below is a code block that contains comments with instructions to complete, in order to successfully setup your github profile on your local CMD terminal."
-    >
-        <CodeBlock 
-          title="Live Practice Demo"
-          code={`
-#Placeholder for content and logice for this live demo
-          `}
-        />
-    </SectionLayout>
+        code={`git config --global pull.rebase false`}
+      />
+
+      {/* LIVE PRACTICE */}
+      <LivePractice
+        title="Live Practice: Configure Your Git Identity"
+        subtitle="Type your real name and email, then see the exact commands you should run."
+        onReset={reset}
+      >
+        {step === 0 && (
+          <div className="space-y-3">
+            <label className="block text-sm text-[var(--color-github-muted)]">
+              What is your full name? (used for user.name)
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="e.g. Darren van der Velde"
+              className="w-full px-3 py-2 rounded-lg bg-[#0d1117] border border-[var(--color-github-border)] text-[var(--color-github-text)] focus:outline-none focus:border-[var(--color-github-accent)]"
+            />
+            <button
+              onClick={next}
+              disabled={!name.trim()}
+              className="px-4 py-2 rounded-lg bg-[var(--color-github-accent)] text-black font-medium disabled:opacity-40"
+            >
+              Next →
+            </button>
+          </div>
+        )}
+
+        {step === 1 && (
+          <div className="space-y-3">
+            <label className="block text-sm text-[var(--color-github-muted)]">
+              What email do you use on GitHub?
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="e.g. you@example.com"
+              className="w-full px-3 py-2 rounded-lg bg-[#0d1117] border border-[var(--color-github-border)] text-[var(--color-github-text)] focus:outline-none focus:border-[var(--color-github-accent)]"
+            />
+            <button
+              onClick={next}
+              disabled={!email.trim()}
+              className="px-4 py-2 rounded-lg bg-[var(--color-github-accent)] text-black font-medium disabled:opacity-40"
+            >
+              Generate Commands →
+            </button>
+          </div>
+        )}
+
+        {completed && (
+          <div className="space-y-4">
+            <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/30">
+              <p className="text-green-400 font-medium">Ready! Copy and run these two commands in your terminal:</p>
+            </div>
+            <CodeBlock
+              title="Your personal Git config commands"
+              code={`git config --global user.name "${name}"\ngit config --global user.email "${email}"`}
+            />
+            <Terminal
+              title="Expected result"
+              lines={[
+                { type: 'command', text: `git config --global user.name "${name}"` },
+                { type: 'command', text: `git config --global user.email "${email}"` },
+                { type: 'command', text: 'git config --global --list' },
+                { type: 'output', text: `user.name=${name}` },
+                { type: 'output', text: `user.email=${email}` },
+              ]}
+            />
+          </div>
+        )}
+      </LivePractice>
     </SectionLayout>
   )
 }
