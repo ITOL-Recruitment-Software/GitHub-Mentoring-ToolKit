@@ -1,30 +1,10 @@
-import { useState } from 'react'
 import SectionLayout from '../components/SectionLayout'
 import Terminal from '../components/Terminal'
 import CodeBlock from '../components/CodeBlock'
 import LivePractice from '../components/LivePractice'
+import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function Setup() {
-  const [step, setStep] = useState(0)
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [completed, setCompleted] = useState(false)
-
-  const reset = () => {
-    setStep(0)
-    setName('')
-    setEmail('')
-    setCompleted(false)
-  }
-
-  const next = () => {
-    if (step === 0 && name.trim()) setStep(1)
-    else if (step === 1 && email.trim()) {
-      setStep(2)
-      setCompleted(true)
-    }
-  }
-
   return (
     <SectionLayout
       title="Setting Up Git"
@@ -80,77 +60,40 @@ export default function Setup() {
         code={`git config --global pull.rebase false`}
       />
 
-      {/* LIVE PRACTICE */}
+      {/* LIVE PRACTICE – real typeable terminal */}
       <LivePractice
-        title="Live Practice: Configure Your Git Identity"
-        subtitle="Type your real name and email, then see the exact commands you should run."
-        onReset={reset}
+        title="Live Practice: Type the commands yourself"
+        subtitle="This is a simulated Git Bash. Type the real commands below and press Enter."
       >
-        {step === 0 && (
-          <div className="space-y-3">
-            <label className="block text-sm text-[var(--color-github-muted)]">
-              What is your full name? (used for user.name)
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Darren van der Velde"
-              className="w-full px-3 py-2 rounded-lg bg-[#0d1117] border border-[var(--color-github-border)] text-[var(--color-github-text)] focus:outline-none focus:border-[var(--color-github-accent)]"
-            />
-            <button
-              onClick={next}
-              disabled={!name.trim()}
-              className="px-4 py-2 rounded-lg bg-[var(--color-github-accent)] text-black font-medium disabled:opacity-40"
-            >
-              Next →
-            </button>
-          </div>
-        )}
+        <p className="text-sm text-[var(--color-github-muted)] mb-2">
+          Try these in order:
+        </p>
+        <ol className="text-sm text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4 font-mono">
+          <li>git --version</li>
+          <li>git config --global user.name "Your Real Name"</li>
+          <li>git config --global user.email "your@email.com"</li>
+          <li>git config --global --list</li>
+        </ol>
 
-        {step === 1 && (
-          <div className="space-y-3">
-            <label className="block text-sm text-[var(--color-github-muted)]">
-              What email do you use on GitHub?
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g. you@example.com"
-              className="w-full px-3 py-2 rounded-lg bg-[#0d1117] border border-[var(--color-github-border)] text-[var(--color-github-text)] focus:outline-none focus:border-[var(--color-github-accent)]"
-            />
-            <button
-              onClick={next}
-              disabled={!email.trim()}
-              className="px-4 py-2 rounded-lg bg-[var(--color-github-accent)] text-black font-medium disabled:opacity-40"
-            >
-              Generate Commands →
-            </button>
-          </div>
-        )}
-
-        {completed && (
-          <div className="space-y-4">
-            <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/30">
-              <p className="text-green-400 font-medium">Ready! Copy and run these two commands in your terminal:</p>
-            </div>
-            <CodeBlock
-              title="Your personal Git config commands"
-              code={`git config --global user.name "${name}"\ngit config --global user.email "${email}"`}
-            />
-            <Terminal
-              title="Expected result"
-              lines={[
-                { type: 'command', text: `git config --global user.name "${name}"` },
-                { type: 'command', text: `git config --global user.email "${email}"` },
-                { type: 'command', text: 'git config --global --list' },
-                { type: 'output', text: `user.name=${name}` },
-                { type: 'output', text: `user.email=${email}` },
-              ]}
-            />
-          </div>
-        )}
+        <InteractiveTerminal
+          title="Git Bash – Setup Practice"
+          prompt="MINGW64:/c/Users/student$"
+          placeholder="Type a command…"
+          height="280px"
+          commandMap={{
+            'git --version': [{ type: 'output', text: 'git version 2.45.2.windows.1' }],
+            'git config --global --list': [
+              { type: 'output', text: 'user.name=Your Real Name' },
+              { type: 'output', text: 'user.email=your@email.com' },
+              { type: 'output', text: 'init.defaultBranch=main' },
+              { type: 'output', text: 'color.ui=auto' },
+            ],
+            'git config --list': [
+              { type: 'output', text: 'user.name=Your Real Name' },
+              { type: 'output', text: 'user.email=your@email.com' },
+            ],
+          }}
+        />
       </LivePractice>
     </SectionLayout>
   )
