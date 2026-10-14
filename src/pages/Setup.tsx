@@ -65,9 +65,6 @@ git config --global color.ui auto
 git config --global pull.rebase false
         `}/>
     </SectionLayout>
-
-    {/* This Section Below will be the practical live demo to complete it. */}
-    
     <SectionLayout
           title="Live Practice Demo"
           subtitle="Below is a code block that contains comments with instructions to complete, in order to successfully setup your github profile on your local CMD terminal."
