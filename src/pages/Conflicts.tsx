@@ -1,6 +1,8 @@
 import SectionLayout from '../components/SectionLayout'
 import CodeBlock from '../components/CodeBlock'
 import Terminal from '../components/Terminal'
+import LivePractice from '../components/LivePractice'
+import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function Conflicts() {
   return (
@@ -17,11 +19,7 @@ export default function Conflicts() {
       <CodeBlock
         title="src/App.jsx (conflicted)"
         language="jsx"
-        code={`<<<<<<< HEAD
-Current code (your branch / main)
-=======
-Incoming code (the branch being merged)
->>>>>>> feature-login`}
+        code={`<<<<<<< HEAD\nCurrent code (your branch / main)\n=======\nIncoming code (the branch being merged)\n>>>>>>> feature-login`}
       />
 
       <h2 className="text-xl font-semibold mt-8">How to resolve</h2>
@@ -46,6 +44,38 @@ Incoming code (the branch being merged)
           resolve them together, and feel the relief when the commit succeeds.
         </p>
       </div>
+
+      <LivePractice
+        title="Live Practice: Resolve a conflict"
+        subtitle="Simulate the commands after you have fixed the conflict markers."
+      >
+        <p className="text-sm text-[var(--color-github-muted)] mb-2">After editing the file, type:</p>
+        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4">
+          <li>git status</li>
+          <li>git add .</li>
+          <li>git commit -m "fix: resolve merge conflict"</li>
+        </ol>
+
+        <InteractiveTerminal
+          title="Git Bash – Conflict Resolution"
+          prompt="MINGW64:/c/Users/student/my-project$"
+          height="280px"
+          commandMap={{
+            'git status': [
+              { type: 'output', text: 'On branch main' },
+              { type: 'output', text: 'You have unmerged paths.' },
+              { type: 'output', text: '  (fix conflicts and run "git commit")' },
+              { type: 'output', text: '  (use "git merge --abort" to abort the merge)' },
+              { type: 'output', text: '' },
+              { type: 'output', text: 'Unmerged paths:' },
+              { type: 'output', text: '  (use "git add <file>..." to mark resolution)' },
+              { type: 'output', text: '\tboth modified:   src/App.jsx' },
+            ],
+            'git add .': [{ type: 'success', text: '' }],
+            'git add src/App.jsx': [{ type: 'success', text: '' }],
+          }}
+        />
+      </LivePractice>
     </SectionLayout>
   )
 }

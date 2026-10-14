@@ -1,6 +1,8 @@
 import SectionLayout from '../components/SectionLayout'
 import GitGraph from '../components/GitGraph'
 import CodeBlock from '../components/CodeBlock'
+import LivePractice from '../components/LivePractice'
+import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function Branching() {
   return (
@@ -49,10 +51,44 @@ export default function Branching() {
 
       <CodeBlock
         title="Mental model"
-        code={`main          ──●──●──────────────●──  (always stable)
-                 \\
-feature-login     ●──●──●          (work in progress)`}
+        code={`main          ──●──●──────────────●──  (always stable)\n                 \\\nfeature-login     ●──●──●          (work in progress)`}
       />
+
+      <LivePractice
+        title="Live Practice: Create and switch branches"
+        subtitle="Type the real Git commands in the terminal below."
+      >
+        <p className="text-sm text-[var(--color-github-muted)] mb-2">Try this sequence:</p>
+        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4">
+          <li>git branch</li>
+          <li>git checkout -b feature/login</li>
+          <li>git branch</li>
+          <li>git checkout main</li>
+        </ol>
+
+        <InteractiveTerminal
+          title="Git Bash – Branching Practice"
+          prompt="MINGW64:/c/Users/student/my-project$"
+          height="280px"
+          commandMap={{
+            'git branch': [
+              { type: 'output', text: '* main' },
+            ],
+            'git checkout -b feature/login': [
+              { type: 'output', text: "Switched to a new branch 'feature/login'" },
+            ],
+            'git checkout main': [
+              { type: 'output', text: "Switched to branch 'main'" },
+            ],
+            'git switch -c feature/login': [
+              { type: 'output', text: "Switched to a new branch 'feature/login'" },
+            ],
+            'git switch main': [
+              { type: 'output', text: "Switched to branch 'main'" },
+            ],
+          }}
+        />
+      </LivePractice>
     </SectionLayout>
   )
 }
