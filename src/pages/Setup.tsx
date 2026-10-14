@@ -64,10 +64,14 @@ git config --global color.ui auto
         code={`
 git config --global pull.rebase false
         `}/>
+    </SectionLayout>
 
-        {/* This Section Below will be the practical live demo to complete it. */}
-
-        <h2 className="text-xl font-semibold">Live Practice Git Configuration</h2>
+    {/* This Section Below will be the practical live demo to complete it. */}
+    
+    <SectionLayout
+          title="Live Practice Demo"
+          subtitle="Below is a code block that contains comments with instructions to complete, in order to successfully setup your github profile on your local CMD terminal."
+    >
         <CodeBlock 
           title="Live Practice Demo"
           code={`
