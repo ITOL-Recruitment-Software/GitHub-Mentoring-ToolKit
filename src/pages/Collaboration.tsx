@@ -1,7 +1,5 @@
 import SectionLayout from '../components/SectionLayout'
 import FlowDiagram from '../components/FlowDiagram'
-import LivePractice from '../components/LivePractice'
-import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function Collaboration() {
   return (
@@ -34,35 +32,15 @@ export default function Collaboration() {
         </ul>
       </section>
 
-      <LivePractice
-        variant="terminal"
-        title="Push a feature branch"
-        subtitle="Local Git Bash only — opening the PR happens on GitHub (see Pull Requests page)."
-      >
-        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4">
+      <div className="mt-10 pt-6 border-t border-[var(--color-github-border)]">
+        <p className="text-xs font-semibold tracking-wider text-[var(--color-github-accent)] mb-2">TRY IN FOOTER TERMINAL</p>
+        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1">
           <li>git checkout -b feature/auth</li>
           <li>git add .</li>
           <li>git commit -m &quot;feat: add authentication&quot;</li>
           <li>git push -u origin feature/auth</li>
         </ol>
-        <InteractiveTerminal
-          title="Git Bash – push branch"
-          prompt="MINGW64:/c/Users/student/my-project$"
-          height="280px"
-          commandMap={{
-            'git checkout -b feature/auth': [
-              { type: 'output', text: "Switched to a new branch 'feature/auth'" },
-            ],
-            'git add .': [{ type: 'success', text: '' }],
-            'git push -u origin feature/auth': [
-              { type: 'output', text: 'Enumerating objects: 5, done.' },
-              { type: 'output', text: 'Writing objects: 100% (3/3), done.' },
-              { type: 'output', text: ' * [new branch]      feature/auth -> feature/auth' },
-              { type: 'output', text: "Branch 'feature/auth' set up to track remote branch 'feature/auth' from 'origin'." },
-            ],
-          }}
-        />
-      </LivePractice>
+      </div>
     </SectionLayout>
   )
 }

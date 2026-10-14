@@ -1,7 +1,5 @@
 import SectionLayout from '../components/SectionLayout'
 import CodeBlock from '../components/CodeBlock'
-import LivePractice from '../components/LivePractice'
-import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function WorkingLocally() {
   return (
@@ -34,38 +32,15 @@ export default function WorkingLocally() {
         </p>
       </section>
 
-      <LivePractice
-        variant="terminal"
-        title="Clone and inspect"
-        subtitle="Practice the commands in Git Bash."
-      >
-        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4">
+      <div className="mt-10 pt-6 border-t border-[var(--color-github-border)]">
+        <p className="text-xs font-semibold tracking-wider text-[var(--color-github-accent)] mb-2">TRY IN FOOTER TERMINAL</p>
+        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1">
           <li>git clone https://github.com/owner/demo-repo.git</li>
           <li>cd demo-repo</li>
           <li>git status</li>
           <li>git log --oneline</li>
         </ol>
-        <InteractiveTerminal
-          title="Git Bash – local clone"
-          prompt="MINGW64:/c/Users/student$"
-          height="280px"
-          commandMap={{
-            'git clone https://github.com/owner/demo-repo.git': [
-              { type: 'output', text: "Cloning into 'demo-repo'..." },
-              { type: 'output', text: 'Receiving objects: 100% (12/12), done.' },
-            ],
-            'cd demo-repo': [{ type: 'output', text: '' }],
-            'git status': [
-              { type: 'output', text: 'On branch main' },
-              { type: 'output', text: 'nothing to commit, working tree clean' },
-            ],
-            'git log --oneline': [
-              { type: 'output', text: 'a1b2c3d (HEAD -> main) Initial commit' },
-              { type: 'output', text: 'e4f5g6h docs: add README' },
-            ],
-          }}
-        />
-      </LivePractice>
+      </div>
     </SectionLayout>
   )
 }

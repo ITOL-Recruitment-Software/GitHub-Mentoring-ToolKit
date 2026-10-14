@@ -1,8 +1,6 @@
 import SectionLayout from '../components/SectionLayout'
 import GitGraph from '../components/GitGraph'
 import CodeBlock from '../components/CodeBlock'
-import LivePractice from '../components/LivePractice'
-import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function Branching() {
   return (
@@ -55,33 +53,14 @@ export default function Branching() {
         code={`main       ──●──●──────────●──  (stable)\n              \\\nfeature        ●──●──●         (in progress)`}
       />
 
-      <LivePractice
-        variant="terminal"
-        title="Create and switch branches"
-        subtitle="Practice checkout / switch in Git Bash."
-      >
-        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4">
+      <div className="mt-10 pt-6 border-t border-[var(--color-github-border)]">
+        <p className="text-xs font-semibold tracking-wider text-[var(--color-github-accent)] mb-2">TRY IN FOOTER TERMINAL</p>
+        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1">
           <li>git branch</li>
           <li>git checkout -b feature/login</li>
           <li>git checkout main</li>
         </ol>
-        <InteractiveTerminal
-          title="Git Bash – branching"
-          prompt="MINGW64:/c/Users/student/my-project$"
-          height="260px"
-          commandMap={{
-            'git branch': [{ type: 'output', text: '* main' }],
-            'git checkout -b feature/login': [
-              { type: 'output', text: "Switched to a new branch 'feature/login'" },
-            ],
-            'git checkout main': [{ type: 'output', text: "Switched to branch 'main'" }],
-            'git switch -c feature/login': [
-              { type: 'output', text: "Switched to a new branch 'feature/login'" },
-            ],
-            'git switch main': [{ type: 'output', text: "Switched to branch 'main'" }],
-          }}
-        />
-      </LivePractice>
+      </div>
     </SectionLayout>
   )
 }

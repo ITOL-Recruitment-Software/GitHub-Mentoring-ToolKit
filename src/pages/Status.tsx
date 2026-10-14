@@ -1,7 +1,5 @@
 import SectionLayout from '../components/SectionLayout'
 import FlowDiagram from '../components/FlowDiagram'
-import LivePractice from '../components/LivePractice'
-import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function Status() {
   return (
@@ -34,34 +32,12 @@ export default function Status() {
         </p>
       </div>
 
-      <LivePractice
-        variant="terminal"
-        title="Type git status"
-        subtitle="Simulated Git Bash — type the command and read the realistic output."
-      >
-        <p className="text-sm text-[var(--color-github-muted)] mb-3">
-          Try: <code className="text-[var(--color-github-accent)] text-sm">git status</code>
+      <div className="mt-10 pt-6 border-t border-[var(--color-github-border)]">
+        <p className="text-xs font-semibold tracking-wider text-[var(--color-github-accent)] mb-2">TRY IN FOOTER TERMINAL</p>
+        <p className="text-sm text-[var(--color-github-muted)] leading-relaxed">
+          Type <code className="text-[var(--color-github-accent)] text-sm">git status</code> in the Git Bash footer below.
         </p>
-        <InteractiveTerminal
-          title="Git Bash – status"
-          prompt="MINGW64:/c/Users/student/my-project$"
-          height="260px"
-          commandMap={{
-            'git status': [
-              { type: 'output', text: 'On branch main' },
-              { type: 'output', text: "Your branch is up to date with 'origin/main'." },
-              { type: 'output', text: '' },
-              { type: 'output', text: 'Changes not staged for commit:' },
-              { type: 'output', text: '  (use "git add <file>..." to update what will be committed)' },
-              { type: 'output', text: '  (use "git restore <file>..." to discard changes in working directory)' },
-              { type: 'output', text: '\tmodified:   src/Login.jsx' },
-              { type: 'output', text: '\tmodified:   src/App.jsx' },
-              { type: 'output', text: '' },
-              { type: 'output', text: 'no changes added to commit (use "git add" and/or "git commit -a")' },
-            ],
-          }}
-        />
-      </LivePractice>
+      </div>
     </SectionLayout>
   )
 }

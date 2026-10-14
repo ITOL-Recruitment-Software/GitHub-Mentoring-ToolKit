@@ -1,6 +1,4 @@
 import SectionLayout from '../components/SectionLayout'
-import LivePractice from '../components/LivePractice'
-import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function AddCommit() {
   return (
@@ -42,39 +40,15 @@ export default function AddCommit() {
         <code className="text-[var(--color-github-blue)] text-xs">git add .</code> only when you intend to include everything.
       </p>
 
-      <LivePractice
-        variant="terminal"
-        title="Stage and commit"
-        subtitle="Type the full sequence in Git Bash."
-      >
-        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4">
+      <div className="mt-10 pt-6 border-t border-[var(--color-github-border)]">
+        <p className="text-xs font-semibold tracking-wider text-[var(--color-github-accent)] mb-2">TRY IN FOOTER TERMINAL</p>
+        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1">
           <li>git status</li>
           <li>git add src/Login.jsx</li>
           <li>git commit -m &quot;feat: add login component&quot;</li>
           <li>git log --oneline</li>
         </ol>
-        <InteractiveTerminal
-          title="Git Bash – add & commit"
-          prompt="MINGW64:/c/Users/student/my-project$"
-          height="300px"
-          commandMap={{
-            'git status': [
-              { type: 'output', text: 'On branch main' },
-              { type: 'output', text: 'Changes not staged for commit:' },
-              { type: 'output', text: '\tmodified:   src/Login.jsx' },
-              { type: 'output', text: '' },
-              { type: 'output', text: 'no changes added to commit' },
-            ],
-            'git add src/Login.jsx': [{ type: 'success', text: '' }],
-            'git add .': [{ type: 'success', text: '' }],
-            'git log --oneline': [
-              { type: 'output', text: 'a1b2c3d (HEAD -> main) feat: add login component' },
-              { type: 'output', text: 'e4f5g6h docs: update README' },
-              { type: 'output', text: 'i7j8k9l Initial commit' },
-            ],
-          }}
-        />
-      </LivePractice>
+      </div>
     </SectionLayout>
   )
 }
