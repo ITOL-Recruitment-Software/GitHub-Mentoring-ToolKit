@@ -34,6 +34,7 @@
     { "id": "practice-branch-simulator", "title": "Branch Simulator", "icon": "GitBranch", "path": "/practice/branch-simulator", "group": "Live Practices" },
     { "id": "practice-commit-messages", "title": "Commit Message Challenge", "icon": "MessageSquare", "path": "/practice/commit-messages", "group": "Live Practices" },
     { "id": "practice-merge-conflict", "title": "Merge Conflict Arena", "icon": "AlertTriangle", "path": "/practice/merge-conflict", "group": "Live Practices" },
+    { "id": "practice-pr-merge", "title": "PR & Merge (GitHub UI)", "icon": "GitPullRequestArrow", "path": "/practice/pr-merge", "group": "Live Practices" },
     { "id": "readme", "title": "README.md", "icon": "FileText", "path": "/readme", "group": "Reference" },
     { "id": "gitignore", "title": ".gitignore", "icon": "EyeOff", "path": "/gitignore", "group": "Reference" },
     { "id": "issues", "title": "GitHub Issues", "icon": "CircleDot", "path": "/issues", "group": "Reference" },
