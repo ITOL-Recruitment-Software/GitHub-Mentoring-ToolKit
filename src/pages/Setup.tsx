@@ -46,18 +46,26 @@ git config --global user.email "email@example.com"`}
       </div>
 
       <h2 className="text-xl font-semibold mt-8">3. Useful extra settings</h2>
+      {/* Default Branch Code block */}
       <CodeBlock
         code={`
 # Default branch name for new repos
 git config --global init.defaultBranch main
-
+      `}/>
+      {/* Change the emulator to a better color */}
+      <CodeBlock 
+        code={`
 # Better diff colors
 git config --global color.ui auto
-
+        `}/>
+      {/* Simple Pull Config setup for making it rebase to false */}
+      <CodeBlock
+      code={`
 # Simple pull behavior
-git config --global pull.rebase false`
-}
-      />
+git config --global pull.rebase false
+        `}/>
+
+        {/* This Section Below will be the practical live demo to complete it. */}
     </SectionLayout>
   )
 }
