@@ -1,0 +1,40 @@
+{
+  "practices": [
+    {
+      "id": "git-config",
+      "title": "Git Configuration Practice",
+      "path": "/setup",
+      "group": "Live Practices",
+      "icon": "Settings",
+      "difficulty": "beginner",
+      "description": "Configure your Git identity step-by-step with live feedback."
+    },
+    {
+      "id": "branch-simulator",
+      "title": "Branch Simulator",
+      "path": "/practice/branch-simulator",
+      "group": "Live Practices",
+      "icon": "GitBranch",
+      "difficulty": "beginner",
+      "description": "Create and switch branches interactively. Watch the graph update in real time."
+    },
+    {
+      "id": "commit-messages",
+      "title": "Commit Message Challenge",
+      "path": "/practice/commit-messages",
+      "group": "Live Practices",
+      "icon": "MessageSquare",
+      "difficulty": "beginner",
+      "description": "Write good commit messages and get instant feedback."
+    },
+    {
+      "id": "merge-conflict",
+      "title": "Merge Conflict Arena",
+      "path": "/practice/merge-conflict",
+      "group": "Live Practices",
+      "icon": "AlertTriangle",
+      "difficulty": "intermediate",
+      "description": "Resolve realistic merge conflicts step-by-step."
+    }
+  ]
+}

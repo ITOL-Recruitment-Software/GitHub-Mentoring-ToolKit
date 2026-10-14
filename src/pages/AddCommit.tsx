@@ -1,6 +1,7 @@
 import SectionLayout from '../components/SectionLayout'
 import Terminal from '../components/Terminal'
-import CodeBlock from '../components/CodeBlock'
+import LivePractice from '../components/LivePractice'
+import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function AddCommit() {
   return (
@@ -59,6 +60,44 @@ export default function AddCommit() {
         Use <code className="text-[var(--color-github-blue)]">git add .</code> to stage everything,
         or stage specific files for cleaner commits.
       </p>
+
+      {/* LIVE PRACTICE */}
+      <LivePractice
+        title="Live Practice: Stage and commit yourself"
+        subtitle="Type the real sequence in the Git Bash below."
+      >
+        <p className="text-sm text-[var(--color-github-muted)] mb-2">Suggested sequence:</p>
+        <ol className="text-sm font-mono text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4">
+          <li>git status</li>
+          <li>git add src/Login.jsx</li>
+          <li>git status</li>
+          <li>git commit -m "feat: add login component"</li>
+          <li>git log --oneline</li>
+        </ol>
+
+        <InteractiveTerminal
+          title="Git Bash – Add & Commit Practice"
+          prompt="MINGW64:/c/Users/student/my-project$"
+          height="300px"
+          commandMap={{
+            'git status': [
+              { type: 'output', text: 'On branch main' },
+              { type: 'output', text: 'Changes not staged for commit:' },
+              { type: 'output', text: '  (use "git add <file>..." to update what will be committed)' },
+              { type: 'output', text: '\tmodified:   src/Login.jsx' },
+              { type: 'output', text: '' },
+              { type: 'output', text: 'no changes added to commit (use "git add" and/or "git commit -a")' },
+            ],
+            'git add src/Login.jsx': [{ type: 'success', text: '' }],
+            'git add .': [{ type: 'success', text: '' }],
+            'git log --oneline': [
+              { type: 'output', text: 'a1b2c3d (HEAD -> main) feat: add login component' },
+              { type: 'output', text: 'e4f5g6h docs: update README' },
+              { type: 'output', text: 'i7j8k9l Initial commit' },
+            ],
+          }}
+        />
+      </LivePractice>
     </SectionLayout>
   )
 }

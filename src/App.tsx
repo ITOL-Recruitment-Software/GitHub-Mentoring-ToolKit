@@ -41,6 +41,9 @@ import Actions from './pages/Actions'
 import Mistakes from './pages/Mistakes'
 import BestPractices from './pages/BestPractices'
 import Appendix from './pages/Appendix'
+import BranchSimulator from './pages/practice/BranchSimulator'
+import CommitMessagePractice from './pages/practice/CommitMessagePractice'
+import MergeConflictPractice from './pages/practice/MergeConflictPractice'
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -82,6 +85,9 @@ export default function App() {
             <Route path="/git-reset" element={<GitReset />} />
             <Route path="/cherry-pick" element={<CherryPick />} />
             <Route path="/merge-strategies" element={<MergeStrategies />} />
+            <Route path="/practice/branch-simulator" element={<BranchSimulator />} />
+            <Route path="/practice/commit-messages" element={<CommitMessagePractice />} />
+            <Route path="/practice/merge-conflict" element={<MergeConflictPractice />} />
             <Route path="/readme" element={<Readme />} />
             <Route path="/gitignore" element={<Gitignore />} />
             <Route path="/issues" element={<Issues />} />

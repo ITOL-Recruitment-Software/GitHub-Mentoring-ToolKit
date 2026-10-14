@@ -1,6 +1,8 @@
 import SectionLayout from '../components/SectionLayout'
 import Terminal from '../components/Terminal'
 import CodeBlock from '../components/CodeBlock'
+import LivePractice from '../components/LivePractice'
+import InteractiveTerminal from '../components/InteractiveTerminal'
 
 export default function Setup() {
   return (
@@ -32,8 +34,7 @@ export default function Setup() {
       </p>
       <CodeBlock
         title="Global configuration"
-        code={`git config --global user.name "Your Name"
-git config --global user.email "email@example.com"`}
+        code={`git config --global user.name "Your Name"\ngit config --global user.email "email@example.com"`}
       />
 
       <div className="p-4 rounded-lg border border-[var(--color-github-yellow)]/40 bg-[#161b22] my-4">
@@ -46,35 +47,54 @@ git config --global user.email "email@example.com"`}
       </div>
 
       <h2 className="text-xl font-semibold mt-8">3. Useful extra settings</h2>
-      {/* Default Branch Code block */}
       <CodeBlock
         title="Default Branch name for new Repos"
-        code={`
-git config --global init.defaultBranch main
-      `}/>
-      {/* Change the emulator to a better color */}
-      <CodeBlock 
+        code={`git config --global init.defaultBranch main`}
+      />
+      <CodeBlock
         title="Better diff colors"
-        code={`
-git config --global color.ui auto
-        `}/>
-      {/* Simple Pull Config setup for making it rebase to false */}
+        code={`git config --global color.ui auto`}
+      />
       <CodeBlock
         title="Simple pull Behavior"
-        code={`
-git config --global pull.rebase false
-        `}/>
-    <SectionLayout
-          title="Live Practice Demo"
-          subtitle="Below is a code block that contains comments with instructions to complete, in order to successfully setup your github profile on your local CMD terminal."
-    >
-        <CodeBlock 
-          title="Live Practice Demo"
-          code={`
-#Placeholder for content and logice for this live demo
-          `}
+        code={`git config --global pull.rebase false`}
+      />
+
+      {/* LIVE PRACTICE – real typeable terminal */}
+      <LivePractice
+        title="Live Practice: Type the commands yourself"
+        subtitle="This is a simulated Git Bash. Type the real commands below and press Enter."
+      >
+        <p className="text-sm text-[var(--color-github-muted)] mb-2">
+          Try these in order:
+        </p>
+        <ol className="text-sm text-[var(--color-github-muted)] list-decimal list-inside space-y-1 mb-4 font-mono">
+          <li>git --version</li>
+          <li>git config --global user.name "Your Real Name"</li>
+          <li>git config --global user.email "your@email.com"</li>
+          <li>git config --global --list</li>
+        </ol>
+
+        <InteractiveTerminal
+          title="Git Bash – Setup Practice"
+          prompt="MINGW64:/c/Users/student$"
+          placeholder="Type a command…"
+          height="280px"
+          commandMap={{
+            'git --version': [{ type: 'output', text: 'git version 2.45.2.windows.1' }],
+            'git config --global --list': [
+              { type: 'output', text: 'user.name=Your Real Name' },
+              { type: 'output', text: 'user.email=your@email.com' },
+              { type: 'output', text: 'init.defaultBranch=main' },
+              { type: 'output', text: 'color.ui=auto' },
+            ],
+            'git config --list': [
+              { type: 'output', text: 'user.name=Your Real Name' },
+              { type: 'output', text: 'user.email=your@email.com' },
+            ],
+          }}
         />
-    </SectionLayout>
+      </LivePractice>
     </SectionLayout>
   )
 }
