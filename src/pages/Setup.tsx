@@ -32,7 +32,8 @@ export default function Setup() {
       </p>
       <CodeBlock
         title="Global configuration"
-        code={`git config --global user.name "Your Name" git config --global user.email "email@example.com"`}
+        code={`git config --global user.name "Your Name"
+git config --global user.email "email@example.com"`}
       />
 
       <div className="p-4 rounded-lg border border-[var(--color-github-yellow)]/40 bg-[#161b22] my-4">
@@ -47,15 +48,15 @@ export default function Setup() {
       <h2 className="text-xl font-semibold mt-8">3. Useful extra settings</h2>
       <CodeBlock
         code={`
-          # Default branch name for new repos
-          git config --global init.defaultBranch main
+# Default branch name for new repos
+git config --global init.defaultBranch main
 
-          # Better diff colors
-          git config --global color.ui auto
+# Better diff colors
+git config --global color.ui auto
 
-          # Simple pull behavior
-          git config --global pull.rebase false
-          `}
+# Simple pull behavior
+git config --global pull.rebase false`
+}
       />
     </SectionLayout>
   )
