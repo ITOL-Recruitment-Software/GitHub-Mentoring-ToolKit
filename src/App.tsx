@@ -44,6 +44,7 @@ import Appendix from './pages/Appendix'
 import BranchSimulator from './pages/practice/BranchSimulator'
 import CommitMessagePractice from './pages/practice/CommitMessagePractice'
 import MergeConflictPractice from './pages/practice/MergeConflictPractice'
+import PRMergePractice from './pages/practice/PRMergePractice'
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -88,6 +89,7 @@ export default function App() {
             <Route path="/practice/branch-simulator" element={<BranchSimulator />} />
             <Route path="/practice/commit-messages" element={<CommitMessagePractice />} />
             <Route path="/practice/merge-conflict" element={<MergeConflictPractice />} />
+            <Route path="/practice/pr-merge" element={<PRMergePractice />} />
             <Route path="/readme" element={<Readme />} />
             <Route path="/gitignore" element={<Gitignore />} />
             <Route path="/issues" element={<Issues />} />
