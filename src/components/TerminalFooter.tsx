@@ -14,7 +14,6 @@ export default function TerminalFooter() {
     <footer
       className="fixed bottom-0 left-0 right-0 z-30 lg:left-72 border-t border-[var(--color-github-border)] bg-[#0c0c0c] shadow-[0_-4px_24px_rgba(0,0,0,0.45)]"
     >
-      {/* Drag / toggle bar */}
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -34,7 +33,7 @@ export default function TerminalFooter() {
         </span>
       </button>
 
-      {/* Terminal body — always mounted so state never resets on route change */}
+      {/* Terminal body: always mounted so state never resets on route change */}
       <div
         className={`overflow-hidden transition-[max-height] duration-200 ease-out ${
           open ? 'max-h-[280px]' : 'max-h-0'
@@ -43,7 +42,7 @@ export default function TerminalFooter() {
       >
         <div className="[&_.terminal]:my-0 [&_.terminal]:rounded-none [&_.terminal]:border-0 [&_.terminal]:shadow-none">
           <InteractiveTerminal
-            title="MINGW64 — global practice"
+            title="MINGW64 global practice"
             prompt="MINGW64:/c/Users/student/my-project$"
             placeholder="Type a git command… (persists across pages)"
             height="220px"

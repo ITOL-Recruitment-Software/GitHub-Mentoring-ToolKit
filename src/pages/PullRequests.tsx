@@ -8,11 +8,11 @@ export default function PullRequests() {
   return (
     <SectionLayout
       title="Pull Requests"
-      subtitle="Professional collaboration happens on GitHub — open a PR, review, then merge."
+      subtitle="Professional collaboration happens on GitHub: open a PR, review, then merge."
     >
       <p className="text-[var(--color-github-muted)] leading-relaxed">
         A Pull Request (PR) is a formal request to merge your branch into another branch (usually{' '}
-        <code className="text-[var(--color-github-blue)] text-sm">main</code>). Review, discussion, and CI checks all happen here — not in the local terminal.
+        <code className="text-[var(--color-github-blue)] text-sm">main</code>). Review, discussion, and CI checks all happen here, not in the local terminal.
       </p>
 
       <section>
@@ -57,7 +57,7 @@ export default function PullRequests() {
       <LivePractice
         variant="github"
         title="Open, review, and merge a pull request"
-        subtitle="Simulated GitHub UI — Compare → Create PR → Checks → Approve → Merge. No terminal on this page."
+        subtitle="Simulated GitHub UI: Compare → Create PR → Checks → Approve → Merge. No terminal on this page."
       >
         <GitHubPRSimulator />
       </LivePractice>
