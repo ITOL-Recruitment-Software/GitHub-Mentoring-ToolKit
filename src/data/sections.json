@@ -1,7 +1,7 @@
 {
   "sections": [
     { "id": "home", "title": "Home", "icon": "Home", "path": "/", "group": "Start" },
-    { "id": "intro", "title": "Welcome & License", "icon": "BookOpen", "path": "/intro", "group": "Start" },
+    { "id": "intro", "title": "Intro to Git & GitHub", "icon": "BookOpen", "path": "/intro", "group": "Start" },
     { "id": "ready-for-class", "title": "Getting Ready for Class", "icon": "ClipboardCheck", "path": "/ready-for-class", "group": "Start" },
     { "id": "what-is-github", "title": "What is GitHub?", "icon": "Github", "path": "/what-is-github", "group": "Start" },
     { "id": "github-flow", "title": "GitHub Flow", "icon": "Workflow", "path": "/github-flow", "group": "Start" },
