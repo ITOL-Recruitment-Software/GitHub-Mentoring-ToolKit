@@ -16,7 +16,7 @@ import {
 } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
 
-/** High-level content groups — overview only, not a full curriculum dump */
+/** High-level content groups: overview only, not a full curriculum dump */
 const contentGroups = [
   {
     title: 'Start',
@@ -88,7 +88,7 @@ const appParts = [
   {
     icon: GitPullRequest,
     title: 'GitHub UI labs',
-    desc: 'PR & merge practice looks like github.com — not the terminal.',
+    desc: 'PR and merge practice looks like github.com, not the terminal.',
   },
 ]
 
@@ -98,7 +98,6 @@ export default function Home() {
       title="GitHub Mentoring Toolkit"
       subtitle="Overview of the app and what is inside."
     >
-      {/* What this app is */}
       <section className="rounded-xl border border-[var(--color-github-border)] bg-[#161b22] p-5 sm:p-6">
         <h2 className="text-base font-semibold text-[var(--color-github-text)] mb-2">
           What this app is
@@ -106,11 +105,10 @@ export default function Home() {
         <p className="text-[var(--color-github-muted)] leading-relaxed">
           A <strong className="text-[var(--color-github-text)]">presentation and practice tool for mentors</strong>.
           Open it on a shared screen during student sessions to walk through Git and GitHub workflows.
-          It is not a course platform or LMS — content is organised for live teaching.
+          It is not a course platform or LMS. Content is organised for live teaching.
         </p>
       </section>
 
-      {/* How the app is built */}
       <section>
         <h2 className="text-lg font-semibold text-[var(--color-github-text)] mb-3">
           How the app works
@@ -139,7 +137,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Content overview */}
       <section>
         <h2 className="text-lg font-semibold text-[var(--color-github-text)] mb-1">
           What is inside
@@ -186,7 +183,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Single start action */}
       <div className="pt-2 flex flex-wrap items-center gap-3">
         <Link
           to="/ready-for-class"
