@@ -1,83 +1,112 @@
+import { Link } from 'react-router-dom'
+import { ArrowRight, BookOpen, Users, Monitor, Terminal } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
-import FlowDiagram from '../components/FlowDiagram'
-import CodeBlock from '../components/CodeBlock'
 
 export default function Intro() {
   return (
     <SectionLayout
-      title="Introduction to Git & GitHub"
-      subtitle="Understanding the foundation of modern version control and collaboration."
+      title="Welcome & License"
+      subtitle="How to use this toolkit in mentoring sessions."
     >
-      <h2 className="text-xl font-semibold text-[var(--color-github-text)]">What is Git?</h2>
-      <p className="text-[var(--color-github-muted)] leading-relaxed">
-        Git is a <strong className="text-[var(--color-github-text)]">distributed version control system</strong>.
-        It runs locally on your computer, tracks every change you make to files, and lets you travel
-        back in time through the history of your project.
-      </p>
-      <ul className="list-disc list-inside text-[var(--color-github-muted)] space-y-1 ml-2">
-        <li>Version control system</li>
-        <li>Runs entirely on your machine</li>
-        <li>Tracks changes to files over time</li>
-        <li>Works offline</li>
-      </ul>
+      <section className="rounded-xl border border-[var(--color-github-border)] bg-[#161b22] p-5 sm:p-6">
+        <h2 className="text-base font-semibold text-[var(--color-github-text)] mb-2">
+          Welcome
+        </h2>
+        <p className="text-[var(--color-github-muted)] leading-relaxed">
+          This toolkit is built for <strong className="text-[var(--color-github-text)]">mentors teaching Git and GitHub</strong>.
+          Open it on a shared screen during a session. Walk through a topic, show the diagrams, and let students practice in the footer Git Bash.
+        </p>
+      </section>
 
-      <h2 className="text-xl font-semibold mt-8 text-[var(--color-github-text)]">What is GitHub?</h2>
-      <p className="text-[var(--color-github-muted)] leading-relaxed">
-        GitHub is a <strong className="text-[var(--color-github-text)]">cloud platform</strong> built around Git.
-        It stores your repositories online, makes collaboration easy, and adds tools like Pull Requests,
-        Issues, Actions, and Projects.
-      </p>
-      <ul className="list-disc list-inside text-[var(--color-github-muted)] space-y-1 ml-2">
-        <li>Cloud hosting for Git repositories</li>
-        <li>Enables team collaboration</li>
-        <li>Provides code review, CI/CD, and project management</li>
-      </ul>
+      <section>
+        <h2 className="text-lg sm:text-xl font-semibold text-[var(--color-github-text)] mb-3">
+          How to use it in a session
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-3">
+          <div className="flex gap-3 p-4 rounded-lg border border-[var(--color-github-border)] bg-[#0d1117]">
+            <BookOpen size={18} className="shrink-0 mt-0.5 text-[var(--color-github-blue)]" />
+            <div>
+              <h3 className="text-sm font-semibold text-[var(--color-github-text)]">Pick a topic</h3>
+              <p className="text-sm text-[var(--color-github-muted)] mt-0.5 leading-relaxed">
+                Use the sidebar groups (Start, Projects, Live Practices, Reference).
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-3 p-4 rounded-lg border border-[var(--color-github-border)] bg-[#0d1117]">
+            <Monitor size={18} className="shrink-0 mt-0.5 text-[var(--color-github-blue)]" />
+            <div>
+              <h3 className="text-sm font-semibold text-[var(--color-github-text)]">Teach from the page</h3>
+              <p className="text-sm text-[var(--color-github-muted)] mt-0.5 leading-relaxed">
+                Read the explanations, show Git graphs and flow diagrams on screen.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-3 p-4 rounded-lg border border-[var(--color-github-border)] bg-[#0d1117]">
+            <Terminal size={18} className="shrink-0 mt-0.5 text-[var(--color-github-accent)]" />
+            <div>
+              <h3 className="text-sm font-semibold text-[var(--color-github-text)]">Practice in the footer</h3>
+              <p className="text-sm text-[var(--color-github-muted)] mt-0.5 leading-relaxed">
+                The Git Bash at the bottom stays open on every page. Same history when you navigate.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-3 p-4 rounded-lg border border-[var(--color-github-border)] bg-[#0d1117]">
+            <Users size={18} className="shrink-0 mt-0.5 text-[var(--color-github-blue)]" />
+            <div>
+              <h3 className="text-sm font-semibold text-[var(--color-github-text)]">PR practice is different</h3>
+              <p className="text-sm text-[var(--color-github-muted)] mt-0.5 leading-relaxed">
+                Pull request flows use a GitHub-style UI lab, not the terminal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <h2 className="text-xl font-semibold mt-8 text-[var(--color-github-text)]">Key Difference</h2>
-      <div className="grid sm:grid-cols-2 gap-4 my-4">
-        <div className="p-4 rounded-lg border border-[var(--color-github-border)] bg-[#161b22]">
-          <h3 className="font-semibold text-[var(--color-github-accent)] mb-2">Git</h3>
-          <ul className="text-sm text-[var(--color-github-muted)] space-y-1">
-            <li>• Version control system</li>
-            <li>• Runs locally</li>
-            <li>• Tracks changes</li>
-            <li>• Command-line tool</li>
-          </ul>
-        </div>
-        <div className="p-4 rounded-lg border border-[var(--color-github-border)] bg-[#161b22]">
-          <h3 className="font-semibold text-[var(--color-github-blue)] mb-2">GitHub</h3>
-          <ul className="text-sm text-[var(--color-github-muted)] space-y-1">
-            <li>• Cloud platform</li>
-            <li>• Stores repositories</li>
-            <li>• Enables collaboration</li>
-            <li>• Web + API + tools</li>
-          </ul>
-        </div>
+      <section>
+        <h2 className="text-lg sm:text-xl font-semibold text-[var(--color-github-text)] mb-3">
+          What students will learn
+        </h2>
+        <ul className="list-disc list-inside text-[var(--color-github-muted)] space-y-1.5 leading-relaxed">
+          <li>Git on their machine: status, add, commit, branch, push</li>
+          <li>GitHub collaboration: pull requests, review, merge</li>
+          <li>Conflicts, history, and everyday professional habits</li>
+          <li>Where the terminal ends and the GitHub website begins</li>
+        </ul>
+      </section>
+
+      <section className="rounded-lg border border-[var(--color-github-border)] bg-[#0d1117] p-5">
+        <h2 className="text-base font-semibold text-[var(--color-github-text)] mb-2">
+          License & use
+        </h2>
+        <p className="text-sm text-[var(--color-github-muted)] leading-relaxed mb-3">
+          This material is for <strong className="text-[var(--color-github-text)]">ITOL mentoring and training sessions</strong>.
+          You may use it live with students and adapt examples for class demos.
+        </p>
+        <ul className="text-sm text-[var(--color-github-muted)] space-y-1.5 list-disc list-inside leading-relaxed">
+          <li>Do use it for live mentoring, workshops, and internal training.</li>
+          <li>Do keep branding and attribution when you share or fork the project.</li>
+          <li>Do not present it as an official Git or GitHub product.</li>
+        </ul>
+        <p className="text-xs text-[var(--color-github-muted)] mt-4 leading-relaxed">
+          Git and GitHub are trademarks of their respective owners. This toolkit is an independent teaching aid.
+        </p>
+      </section>
+
+      <div className="flex flex-wrap items-center gap-3 pt-2">
+        <Link
+          to="/ready-for-class"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-github-accent)] text-white font-medium hover:bg-[#2ea043] transition-colors"
+        >
+          Next: Getting Ready for Class
+          <ArrowRight size={16} />
+        </Link>
+        <Link
+          to="/what-is-github"
+          className="text-sm text-[var(--color-github-muted)] hover:text-[var(--color-github-text)] transition-colors"
+        >
+          What is GitHub?
+        </Link>
       </div>
-
-      <h2 className="text-xl font-semibold mt-8 text-[var(--color-github-text)]">How They Connect</h2>
-      <FlowDiagram
-        steps={[
-          { label: 'Developer Computer', sublabel: 'Your local machine', color: '#58a6ff' },
-          { label: 'Git Repository', sublabel: 'Local .git folder', color: '#238636' },
-          { label: 'GitHub Repository', sublabel: 'Remote origin', color: '#a371f7' },
-        ]}
-      />
-
-      <p className="text-[var(--color-github-muted)]">
-        You work locally with Git. When ready, you <code className="text-[var(--color-github-blue)]">push</code> your
-        commits to GitHub so teammates can see them, review them, and pull them into their own machines.
-      </p>
-
-      <CodeBlock
-        title="Simple mental model"
-        code={`Local (Git)          Remote (GitHub)
-─────────────        ────────────────
-Working files   →    Shared history
-Commits         →    Pull Requests
-Branches        →    Code Review
-`}
-      />
     </SectionLayout>
   )
 }
