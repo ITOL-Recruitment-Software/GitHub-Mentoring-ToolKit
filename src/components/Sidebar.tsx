@@ -79,14 +79,14 @@ export default function Sidebar({ searchQuery, setSearchQuery }: SidebarProps) {
 
   const NavContent = () => (
     <>
-      <div className="p-4 border-b border-[var(--color-github-border)]">
+      <div className="shrink-0 p-4 border-b border-[var(--color-github-border)]">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-8 h-8 rounded-lg bg-[var(--color-github-accent)] flex items-center justify-center">
             <GitBranch size={18} className="text-white" />
           </div>
-          <div>
-            <h1 className="text-sm font-bold leading-tight">GitHub Mentor</h1>
-            <p className="text-[10px] text-[var(--color-github-muted)]">Official Training Manual</p>
+          <div className="min-w-0">
+            <h1 className="text-sm font-bold leading-tight truncate">GitHub Mentor</h1>
+            <p className="text-[10px] text-[var(--color-github-muted)] truncate">Official Training Manual</p>
           </div>
         </div>
         <div className="relative">
@@ -100,7 +100,7 @@ export default function Sidebar({ searchQuery, setSearchQuery }: SidebarProps) {
           />
         </div>
       </div>
-      <nav className="flex-1 overflow-y-auto p-2 space-y-3">
+      <nav className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-2 space-y-3">
         {groups.map((group) => (
           <div key={group.name}>
             <p className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-github-muted)]">
@@ -149,7 +149,7 @@ export default function Sidebar({ searchQuery, setSearchQuery }: SidebarProps) {
         <div className="lg:hidden fixed inset-0 z-40 bg-black/50" onClick={() => setMobileOpen(false)} />
       )}
       <aside
-        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-72 flex flex-col bg-[#0d1117] border-r border-[var(--color-github-border)] transition-transform lg:translate-x-0 ${
+        className={`fixed lg:static top-0 left-0 z-40 h-full w-72 shrink-0 flex flex-col bg-[#0d1117] border-r border-[var(--color-github-border)] transition-transform lg:translate-x-0 ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
