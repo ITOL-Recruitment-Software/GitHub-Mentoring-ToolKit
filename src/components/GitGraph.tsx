@@ -31,7 +31,6 @@ const branchColors: Record<string, string> = {
 
 /** Approximate text width for monospace-ish labels (used to size the box) */
 function estimateTextWidth(text: string, fontSize = 11): number {
-  // Rough average character width for the font we use
   return Math.max(text.length * (fontSize * 0.62), 24)
 }
 
@@ -39,8 +38,13 @@ export default function GitGraph({ nodes, edges, width = 400, height = 300 }: Gi
   const getNode = (id: string) => nodes.find((n) => n.id === id)
 
   return (
-    <div className="my-6 p-4 rounded-lg border border-[var(--color-github-border)] bg-[#0d1117] overflow-x-auto">
-      <svg width={width} height={height} className="mx-auto">
+    <div className="my-4 sm:my-6 p-3 sm:p-4 rounded-lg border border-[var(--color-github-border)] bg-[#0d1117] overflow-x-auto max-w-full">
+      <svg
+        width={width}
+        height={height}
+        className="mx-auto block max-w-none"
+        style={{ minWidth: width }}
+      >
         {/* Edges */}
         {edges.map((edge, i) => {
           const from = getNode(edge.from)
@@ -68,7 +72,6 @@ export default function GitGraph({ nodes, edges, width = 400, height = 300 }: Gi
           const color = node.color || branchColors[node.branch] || '#238636'
           const hasLabel = Boolean(node.label && node.label.trim())
 
-          // Box dimensions
           const paddingX = 8
           const paddingY = 4
           const fontSize = 11
@@ -76,13 +79,11 @@ export default function GitGraph({ nodes, edges, width = 400, height = 300 }: Gi
           const boxW = textW + paddingX * 2
           const boxH = fontSize + paddingY * 2
 
-          // Position the box to the right of the circle (with a small gap)
           const boxX = node.x + 16
           const boxY = node.y - boxH / 2
 
           return (
             <g key={node.id}>
-              {/* Commit circle */}
               <motion.circle
                 cx={node.x}
                 cy={node.y}
@@ -95,14 +96,12 @@ export default function GitGraph({ nodes, edges, width = 400, height = 300 }: Gi
                 transition={{ type: 'spring', delay: i * 0.08 }}
               />
 
-              {/* Label box (only when there is a label) */}
               {hasLabel && (
                 <motion.g
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ type: 'spring', delay: i * 0.08 + 0.05 }}
                 >
-                  {/* Rounded rectangle background */}
                   <rect
                     x={boxX}
                     y={boxY}
@@ -115,7 +114,6 @@ export default function GitGraph({ nodes, edges, width = 400, height = 300 }: Gi
                     strokeWidth={1.5}
                     opacity={0.95}
                   />
-                  {/* Label text centered inside the box */}
                   <text
                     x={boxX + boxW / 2}
                     y={boxY + boxH / 2 + 1}
