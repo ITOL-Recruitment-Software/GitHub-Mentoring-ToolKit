@@ -29,6 +29,12 @@ const branchColors: Record<string, string> = {
   develop: '#a371f7',
 }
 
+/** Approximate text width for monospace-ish labels (used to size the box) */
+function estimateTextWidth(text: string, fontSize = 11): number {
+  // Rough average character width for the font we use
+  return Math.max(text.length * (fontSize * 0.62), 24)
+}
+
 export default function GitGraph({ nodes, edges, width = 400, height = 300 }: GitGraphProps) {
   const getNode = (id: string) => nodes.find((n) => n.id === id)
 
@@ -56,11 +62,27 @@ export default function GitGraph({ nodes, edges, width = 400, height = 300 }: Gi
             />
           )
         })}
-        {/* Nodes */}
+
+        {/* Nodes: circle + label inside a rounded box */}
         {nodes.map((node, i) => {
           const color = node.color || branchColors[node.branch] || '#238636'
+          const hasLabel = Boolean(node.label && node.label.trim())
+
+          // Box dimensions
+          const paddingX = 8
+          const paddingY = 4
+          const fontSize = 11
+          const textW = hasLabel ? estimateTextWidth(node.label, fontSize) : 0
+          const boxW = textW + paddingX * 2
+          const boxH = fontSize + paddingY * 2
+
+          // Position the box to the right of the circle (with a small gap)
+          const boxX = node.x + 16
+          const boxY = node.y - boxH / 2
+
           return (
             <g key={node.id}>
+              {/* Commit circle */}
               <motion.circle
                 cx={node.x}
                 cy={node.y}
@@ -72,15 +94,41 @@ export default function GitGraph({ nodes, edges, width = 400, height = 300 }: Gi
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', delay: i * 0.08 }}
               />
-              <text
-                x={node.x + 18}
-                y={node.y + 4}
-                fill="#e6edf3"
-                fontSize={12}
-                fontFamily="ui-monospace, monospace"
-              >
-                {node.label}
-              </text>
+
+              {/* Label box (only when there is a label) */}
+              {hasLabel && (
+                <motion.g
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ type: 'spring', delay: i * 0.08 + 0.05 }}
+                >
+                  {/* Rounded rectangle background */}
+                  <rect
+                    x={boxX}
+                    y={boxY}
+                    width={boxW}
+                    height={boxH}
+                    rx={6}
+                    ry={6}
+                    fill="#161b22"
+                    stroke={color}
+                    strokeWidth={1.5}
+                    opacity={0.95}
+                  />
+                  {/* Label text centered inside the box */}
+                  <text
+                    x={boxX + boxW / 2}
+                    y={boxY + boxH / 2 + 1}
+                    fill="#e6edf3"
+                    fontSize={fontSize}
+                    fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    {node.label}
+                  </text>
+                </motion.g>
+              )}
             </g>
           )
         })}
