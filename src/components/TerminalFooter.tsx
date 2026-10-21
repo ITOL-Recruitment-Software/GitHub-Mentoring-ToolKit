@@ -3,16 +3,19 @@ import { ChevronDown, ChevronUp, Terminal } from 'lucide-react'
 import InteractiveTerminal from './InteractiveTerminal'
 
 /**
- * Global practice terminal fixed at the bottom of the app.
+ * Global practice terminal at the bottom of the content column.
  * Mounted once in App (outside <Routes>) so history and output
  * persist when the user navigates between pages.
+ *
+ * Not fixed — lives in the flex column so main content fills
+ * remaining height and nothing overlaps or needs magic padding.
  */
 export default function TerminalFooter() {
   const [open, setOpen] = useState(true)
 
   return (
     <footer
-      className="fixed bottom-0 left-0 right-0 z-30 lg:left-72 border-t border-[var(--color-github-border)] bg-[#0c0c0c] shadow-[0_-4px_24px_rgba(0,0,0,0.45)]"
+      className="shrink-0 z-30 border-t border-[var(--color-github-border)] bg-[#0c0c0c] shadow-[0_-4px_24px_rgba(0,0,0,0.45)]"
     >
       <button
         type="button"
@@ -36,7 +39,7 @@ export default function TerminalFooter() {
       {/* Terminal body: always mounted so state never resets on route change */}
       <div
         className={`overflow-hidden transition-[max-height] duration-200 ease-out ${
-          open ? 'max-h-[280px]' : 'max-h-0'
+          open ? 'max-h-[240px]' : 'max-h-0'
         }`}
         aria-hidden={!open}
       >
@@ -45,7 +48,7 @@ export default function TerminalFooter() {
             title="MINGW64 global practice"
             prompt="MINGW64:/c/Users/student/my-project$"
             placeholder="Type a git command… (persists across pages)"
-            height="220px"
+            height="200px"
           />
         </div>
       </div>
