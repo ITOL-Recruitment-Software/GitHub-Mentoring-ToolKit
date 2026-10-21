@@ -18,13 +18,13 @@ export default function Merge() {
       <section>
         <h2 className="text-lg sm:text-xl font-semibold mb-3">Before merge</h2>
         <GitGraph
-          width={400}
-          height={170}
+          width={460}
+          height={180}
           nodes={[
-            { id: 'm1', label: 'main', branch: 'main', x: 60, y: 115 },
-            { id: 'm2', label: '', branch: 'main', x: 150, y: 115 },
-            { id: 'f1', label: 'feature', branch: 'feature', x: 240, y: 45 },
-            { id: 'f2', label: '', branch: 'feature', x: 330, y: 45 },
+            { id: 'm1', label: 'main', branch: 'main', x: 50, y: 120 },
+            { id: 'm2', label: '', branch: 'main', x: 160, y: 120 },
+            { id: 'f1', label: 'feature', branch: 'feature', x: 270, y: 40 },
+            { id: 'f2', label: '', branch: 'feature', x: 380, y: 40 },
           ]}
           edges={[
             { from: 'm1', to: 'm2' },
@@ -37,13 +37,13 @@ export default function Merge() {
       <section>
         <h2 className="text-lg sm:text-xl font-semibold mb-3">After merge into main</h2>
         <GitGraph
-          width={400}
+          width={460}
           height={130}
           nodes={[
-            { id: 'm1', label: '', branch: 'main', x: 60, y: 65 },
-            { id: 'm2', label: '', branch: 'main', x: 150, y: 65 },
-            { id: 'm3', label: '', branch: 'main', x: 240, y: 65 },
-            { id: 'm4', label: 'main', branch: 'main', x: 330, y: 65 },
+            { id: 'm1', label: '', branch: 'main', x: 50, y: 65 },
+            { id: 'm2', label: '', branch: 'main', x: 160, y: 65 },
+            { id: 'm3', label: '', branch: 'main', x: 270, y: 65 },
+            { id: 'm4', label: 'main', branch: 'main', x: 380, y: 65 },
           ]}
           edges={[
             { from: 'm1', to: 'm2' },
