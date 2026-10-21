@@ -15,14 +15,14 @@ export default function Branching() {
       <section>
         <h2 className="text-lg sm:text-xl font-semibold mb-3">Visual graph</h2>
         <GitGraph
-          width={420}
-          height={200}
+          width={520}
+          height={210}
           nodes={[
             { id: '1', label: 'Initial', branch: 'main', x: 40, y: 110 },
-            { id: '2', label: 'README', branch: 'main', x: 140, y: 110 },
-            { id: '3', label: 'login form', branch: 'feature', x: 240, y: 45 },
-            { id: '4', label: 'validation', branch: 'feature', x: 340, y: 45 },
-            { id: '5', label: 'docs', branch: 'main', x: 240, y: 160 },
+            { id: '2', label: 'README', branch: 'main', x: 160, y: 110 },
+            { id: '3', label: 'login-form', branch: 'feature', x: 290, y: 40 },
+            { id: '4', label: 'validation', branch: 'feature', x: 430, y: 40 },
+            { id: '5', label: 'docs', branch: 'main', x: 290, y: 170 },
           ]}
           edges={[
             { from: '1', to: '2' },
