@@ -52,10 +52,13 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="flex min-h-screen bg-[var(--color-github-dark)]">
+      {/* Full viewport shell — no page-level overflow */}
+      <div className="flex h-screen max-h-screen overflow-hidden bg-[var(--color-github-dark)]">
         <Sidebar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className="flex-1 flex flex-col min-w-0 min-h-screen">
-          <main className="flex-1 overflow-y-auto pb-[280px]">
+
+        {/* Right column: content scrolls, terminal sits at bottom */}
+        <div className="flex-1 flex flex-col min-w-0 min-h-0 h-full">
+          <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/intro" element={<Intro />} />
@@ -103,6 +106,7 @@ export default function App() {
               <Route path="/appendix" element={<Appendix />} />
             </Routes>
           </main>
+
           {/* Mounted outside Routes — same instance on every page */}
           <TerminalFooter />
         </div>
