@@ -6,7 +6,6 @@ import {
   BookOpen,
   GitBranch,
   GitCommitHorizontal,
-  GitFork,
   GitPullRequest,
   Globe2,
   History,
