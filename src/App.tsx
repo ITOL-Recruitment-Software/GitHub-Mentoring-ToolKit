@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import TerminalFooter from './components/TerminalFooter'
+import AssistantChat from './components/AssistantChat'
 import Home from './pages/Home'
 import Intro from './pages/Intro'
 import ReadyForClass from './pages/ReadyForClass'
@@ -110,6 +111,7 @@ export default function App() {
           {/* Mounted outside Routes — same instance on every page */}
           <TerminalFooter />
         </div>
+        <AssistantChat />
       </div>
     </BrowserRouter>
   )
