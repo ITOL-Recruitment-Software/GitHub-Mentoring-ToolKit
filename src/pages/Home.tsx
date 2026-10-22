@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   ArrowDownRight,
@@ -13,6 +14,9 @@ import {
   MessageSquare,
   Rocket,
   ShieldCheck,
+  CheckCircle2,
+  Play,
+  RotateCcw,
   Users,
   Workflow,
 } from 'lucide-react'
@@ -73,6 +77,15 @@ const history = [
 ]
 
 export default function Home() {
+  const [demoStep, setDemoStep] = useState(0)
+  const demoStages = [
+    { label: 'Create a project', command: 'mkdir hello-github && cd hello-github && git init', detail: 'Start a new folder and initialise Git so it can track your project history.' },
+    { label: 'Add a file', command: 'echo "# Hello GitHub" > README.md\ngit status', detail: 'Create a README and ask Git which files are new or changed.' },
+    { label: 'Save a commit', command: 'git add README.md\ngit commit -m "Add project README"', detail: 'Stage the file and save your first named snapshot in the project history.' },
+    { label: 'Share your change', command: 'git switch -c feature/readme\ngit push -u origin feature/readme', detail: 'In a real repository, push a branch to GitHub and open a pull request for review.' },
+  ]
+  const activeDemo = demoStages[demoStep]
+
   return (
     <SectionLayout
       title="GitHub Mentoring Toolkit"
@@ -139,6 +152,46 @@ export default function Home() {
                 <p className="mt-1 text-sm font-semibold text-[var(--color-github-text)]">Learn by doing</p>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        <section id="live-example" className="overflow-hidden rounded-2xl border border-emerald-400/25 bg-[#0d1117]">
+          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[var(--color-github-border)] p-5 sm:p-6">
+            <div>
+              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300"><Play size={14} /> Interactive starter lab</p>
+              <h2 className="mt-2 text-xl font-semibold text-[var(--color-github-text)] sm:text-2xl">Try a Git workflow — right here</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-github-muted)]">Step through a tiny project from folder to shareable change. This is a safe visual simulation: it shows commands and progress without running anything on your computer.</p>
+            </div>
+            <button type="button" onClick={() => setDemoStep(0)} className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-github-border)] px-3 py-2 text-xs font-medium text-[var(--color-github-muted)] transition hover:border-emerald-400/40 hover:text-[var(--color-github-text)]"><RotateCcw size={13} /> Reset demo</button>
+          </div>
+          <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="space-y-2 p-4 sm:p-5">
+              {demoStages.map((stage, index) => (
+                <button key={stage.label} type="button" onClick={() => setDemoStep(index)} className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left transition ${demoStep === index ? 'border-emerald-400/50 bg-emerald-400/10' : 'border-[var(--color-github-border)] bg-[#161b22] hover:border-emerald-400/30'}`}>
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold ${index < demoStep ? 'bg-emerald-400 text-[#07120b]' : demoStep === index ? 'bg-emerald-400/20 text-emerald-300' : 'bg-[#0d1117] text-[var(--color-github-muted)]'}`}>{index < demoStep ? <CheckCircle2 size={16} /> : `0${index + 1}`}</span>
+                  <span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-[var(--color-github-text)]">{stage.label}</span><span className="mt-0.5 block text-xs text-[var(--color-github-muted)]">{index === 0 ? 'Initialise version control' : index === 1 ? 'Create your first file' : index === 2 ? 'Record the change' : 'Prepare to collaborate'}</span></span>
+                </button>
+              ))}
+              <div className="pt-2">
+                <div className="mb-2 flex items-center justify-between text-xs text-[var(--color-github-muted)]"><span>Demo progress</span><span>{demoStep + 1} of {demoStages.length}</span></div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-[#21262d]"><div className="h-full rounded-full bg-emerald-400 transition-all duration-300" style={{ width: `${((demoStep + 1) / demoStages.length) * 100}%` }} /></div>
+              </div>
+            </div>
+            <div className="border-t border-[var(--color-github-border)] p-4 sm:p-5 lg:border-l lg:border-t-0">
+              <div className="overflow-hidden rounded-xl border border-[var(--color-github-border)] bg-[#010409]">
+                <div className="flex items-center gap-2 border-b border-[var(--color-github-border)] px-3 py-2.5"><span className="h-2.5 w-2.5 rounded-full bg-[#ff7b72]" /><span className="h-2.5 w-2.5 rounded-full bg-[#e3b341]" /><span className="h-2.5 w-2.5 rounded-full bg-[#3fb950]" /><span className="ml-2 text-[11px] text-[var(--color-github-muted)]">terminal · hello-github</span></div>
+                <div className="min-h-[130px] p-4">
+                  <p className="mb-3 text-xs font-semibold text-emerald-300">$ {activeDemo.label}</p>
+                  <pre className="whitespace-pre-wrap break-words font-mono text-xs leading-6 text-[var(--color-github-text)]">{activeDemo.command}</pre>
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-[var(--color-github-muted)]">{activeDemo.detail}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button type="button" disabled={demoStep === 0} onClick={() => setDemoStep((step) => Math.max(0, step - 1))} className="rounded-lg border border-[var(--color-github-border)] px-4 py-2 text-xs font-semibold text-[var(--color-github-text)] transition hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-40">Previous step</button>
+                <button type="button" onClick={() => setDemoStep((step) => (step + 1) % demoStages.length)} className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-xs font-semibold text-[#07120b] transition hover:bg-emerald-400">{demoStep === demoStages.length - 1 ? 'Run it again' : 'Next step'} <ArrowRight size={13} /></button>
+              </div>
+              {demoStep === demoStages.length - 1 && <p className="mt-3 text-xs leading-relaxed text-emerald-300">Next in real life: open GitHub, create a pull request, explain the change, and invite a review.</p>}
+            </div>
           </div>
         </section>
 
