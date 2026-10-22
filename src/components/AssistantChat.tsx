@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import { Bot, BookOpen, ChevronDown, MessageCircle, Send, Sparkles, X } from 'lucide-react'
 
 type ChatMessage = {
@@ -63,7 +63,7 @@ export default function AssistantChat() {
 
   return (
     <>
-      <aside className="hidden lg:flex w-[320px] xl:w-[350px] shrink-0 flex-col border-l border-[var(--color-github-border)] bg-[#0d1117]">
+      <aside className="hidden xl:flex w-[320px] 2xl:w-[350px] shrink-0 flex-col border-l border-[var(--color-github-border)] bg-[#0d1117]">
         <ChatContents
           messages={messages}
           draft={draft}
@@ -73,7 +73,7 @@ export default function AssistantChat() {
         />
       </aside>
 
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         {open && (
           <div className="fixed bottom-20 right-3 z-[70] flex h-[min(68vh,560px)] w-[min(380px,calc(100vw-24px))] flex-col overflow-hidden rounded-2xl border border-[var(--color-github-border)] bg-[#0d1117] shadow-2xl shadow-black/50">
             <div className="flex items-center justify-between border-b border-[var(--color-github-border)] px-4 py-3">
