@@ -78,6 +78,7 @@ export default function Home() {
     <SectionLayout
       title="GitHub Mentoring Toolkit"
       subtitle="A friendly starting point for understanding GitHub, how it began, and how developers use it together."
+      fullWidth
     >
       <div className="space-y-8 pb-8">
         <section className="relative isolate overflow-hidden rounded-2xl border border-[var(--color-github-border)] bg-[#0d1117] p-6 sm:p-8 lg:p-10">
