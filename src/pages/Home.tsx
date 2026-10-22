@@ -8,7 +8,6 @@ import {
   GitCommitHorizontal,
   GitFork,
   GitPullRequest,
-  Github,
   Globe2,
   History,
   Lightbulb,
@@ -87,7 +86,7 @@ export default function Home() {
           <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-medium tracking-wide text-emerald-300">
-                <Github size={14} />
+                <GitBranch size={14} />
                 YOUR JOURNEY STARTS HERE
               </div>
               <h2 className="max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-[var(--color-github-text)] sm:text-4xl lg:text-5xl">
