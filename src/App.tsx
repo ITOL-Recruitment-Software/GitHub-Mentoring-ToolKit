@@ -43,6 +43,7 @@ import Actions from './pages/Actions'
 import Mistakes from './pages/Mistakes'
 import BestPractices from './pages/BestPractices'
 import Appendix from './pages/Appendix'
+import NotFound from './pages/NotFound'
 import BranchSimulator from './pages/practice/BranchSimulator'
 import CommitMessagePractice from './pages/practice/CommitMessagePractice'
 import MergeConflictPractice from './pages/practice/MergeConflictPractice'
@@ -53,13 +54,17 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      {/* Full viewport shell — no page-level overflow */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[var(--color-github-accent)] focus:px-4 focus:py-3 focus:font-semibold focus:text-white focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-emerald-300"
+      >
+        Skip to main content
+      </a>
       <div className="flex h-screen max-h-screen overflow-hidden bg-[var(--color-github-dark)]">
         <Sidebar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-        {/* Right column: content scrolls, terminal sits at bottom */}
         <div className="flex-1 flex flex-col min-w-0 min-h-0 h-full">
-          <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
+          <main id="main-content" tabIndex={-1} className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden focus:outline-none">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/intro" element={<Intro />} />
@@ -105,10 +110,10 @@ export default function App() {
               <Route path="/mistakes" element={<Mistakes />} />
               <Route path="/best-practices" element={<BestPractices />} />
               <Route path="/appendix" element={<Appendix />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
 
-          {/* Mounted outside Routes — same instance on every page */}
           <TerminalFooter />
         </div>
         <AssistantChat />
