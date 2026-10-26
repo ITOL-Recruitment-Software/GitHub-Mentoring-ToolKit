@@ -8,7 +8,7 @@ export default function Conflicts() {
       subtitle="When two people change the same lines, Git asks you to decide."
     >
       <p className="text-[var(--color-github-muted)] leading-relaxed">
-        A conflict is not a failure — Git cannot choose for you. Resolve the file, stage it, and commit.
+        A conflict is not a failure. Git cannot choose for you. Resolve the file, stage it, and commit.
       </p>
 
       <section className="space-y-3">

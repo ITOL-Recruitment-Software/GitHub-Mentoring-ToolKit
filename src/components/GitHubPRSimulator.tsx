@@ -288,7 +288,7 @@ export default function GitHubPRSimulator() {
                 </div>
                 <div className="px-4 py-2 text-xs text-[var(--color-github-muted)] border-t border-[var(--color-github-border)] flex items-center gap-2">
                   <ShieldCheck className="w-3.5 h-3.5 text-green-400" />
-                  CI / test — success in 42s
+                  CI / test: success in 42s
                 </div>
               </div>
 

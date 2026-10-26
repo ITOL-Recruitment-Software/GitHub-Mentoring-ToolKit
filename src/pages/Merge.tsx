@@ -8,7 +8,7 @@ export default function Merge() {
   return (
     <SectionLayout
       title="Merging Pull Requests"
-      subtitle="Bring feature work into main — on a team, merge through GitHub, not only with local git merge."
+      subtitle="Bring feature work into main. On a team, merge through GitHub, not only with local git merge."
     >
       <p className="text-[var(--color-github-muted)] leading-relaxed">
         Merging combines commit history from a feature branch into the target branch. In professional teams you merge via the{' '}
@@ -69,7 +69,7 @@ export default function Merge() {
       <LivePractice
         variant="github"
         title="Merge on GitHub"
-        subtitle="Same production flow as the Pull Requests page — approve, choose merge method, confirm."
+        subtitle="Use the same production flow as the Pull Requests page: approve, choose the merge method, and confirm."
       >
         <GitHubPRSimulator />
       </LivePractice>

@@ -3,12 +3,12 @@ import { CheckCircle } from 'lucide-react'
 
 export default function BestPractices() {
   const practices = [
-    'Protect the main branch — require PRs and status checks.',
+    'Protect the main branch by requiring PRs and status checks.',
     'Use Conventional Commits for every message.',
     'Keep feature branches short-lived (days, not weeks).',
     'Write a clear README and keep it updated.',
     'Never commit secrets; use environment variables and .gitignore.',
-    'Review every PR carefully — even small ones.',
+    'Review every PR carefully, including small ones.',
     'Delete merged branches both locally and on the remote.',
     'Run tests (and lint) before opening a PR.',
     'Prefer small, focused PRs over giant ones.',

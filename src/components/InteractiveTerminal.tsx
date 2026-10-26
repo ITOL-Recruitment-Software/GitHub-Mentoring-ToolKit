@@ -45,7 +45,7 @@ function resolveCommand(cmd: string): TermLine[] {
   if (lower === 'clear' || lower === 'cls') return [{ type: 'output', text: '__CLEAR__' }]
   if (lower === 'help' || lower === 'git help' || lower === 'git --help') {
     return [
-      out('Git Bash Practice Terminal — common commands:'),
+      out('Git Bash Practice Terminal: common commands:'),
       out(''),
       out('  Setup & Config'),
       out('    git --version'),
