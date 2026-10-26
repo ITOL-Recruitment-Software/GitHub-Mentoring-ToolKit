@@ -9,7 +9,7 @@ export default function CreateRepo() {
       title="Creating a Repository"
       subtitle="Two common professional workflows."
     >
-      <h2 className="text-xl font-semibold">Option 1 — Create on GitHub first</h2>
+      <h2 className="text-xl font-semibold">Option 1: Create on GitHub first</h2>
       <p className="text-[var(--color-github-muted)]">
         Best when starting a brand-new project that will live on GitHub from day one.
       </p>
@@ -28,7 +28,7 @@ export default function CreateRepo() {
         ]}
       />
 
-      <h2 className="text-xl font-semibold mt-10">Option 2 — Create local project first</h2>
+      <h2 className="text-xl font-semibold mt-10">Option 2: Create local project first</h2>
       <p className="text-[var(--color-github-muted)]">
         Common when you already have code or want to experiment before pushing.
       </p>
@@ -47,7 +47,7 @@ export default function CreateRepo() {
         <p className="text-sm">
           <strong className="text-[var(--color-github-text)]">git init</strong> creates a hidden{' '}
           <code className="text-[var(--color-github-blue)]">.git</code> folder. That folder is the entire
-          local repository — history, branches, configuration. Without it, the folder is just ordinary files.
+          local repository contains history, branches, and configuration. Without it, the folder is just ordinary files.
         </p>
       </div>
     </SectionLayout>
