@@ -1,32 +1,45 @@
+import { Link } from 'react-router-dom'
+import { ArrowRight, AlertTriangle } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
 import CodeBlock from '../components/CodeBlock'
 
 export default function FixingCommits() {
   return (
-    <SectionLayout
-      title="Fixing Commit Mistakes"
-      subtitle="Safe ways to correct the last commit or un-stage files."
-    >
-      <h2 className="text-xl font-semibold">Amend the last commit</h2>
-      <CodeBlock
-        code={`# Change the message only\ngit commit --amend -m "Better message"\n\n# Add forgotten files to the last commit\ngit add forgotten-file.ts\ngit commit --amend --no-edit`}
-      />
+    <SectionLayout title="Fixing Commit Mistakes" subtitle="Choose the smallest safe correction for a message, staged file, or local edit.">
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Correct the most recent commit</h2>
+        <CodeBlock title="Amend before publishing" code={`git status
+git commit --amend -m "Describe the change clearly"
 
-      <div className="p-4 rounded-lg border border-[var(--color-github-yellow)]/40 bg-[#161b22] my-4">
-        <p className="text-sm text-[var(--color-github-yellow)] font-medium">Warning</p>
-        <p className="text-sm text-[var(--color-github-muted)] mt-1">
-          Only amend commits that have <strong>not</strong> been pushed yet.
-          Amending a published commit rewrites history and forces everyone else to adapt.
-        </p>
+# Include a forgotten file in the latest commit
+git add path/to/forgotten-file
+git commit --amend --no-edit`} />
+        <p className="text-sm leading-6 text-[var(--color-github-muted)]">Amend replaces the most recent commit with a new commit. Use it for a message correction or to include a file you forgot to stage.</p>
+      </section>
+
+      <div className="rounded-lg border border-amber-400/25 bg-amber-400/[0.06] p-4">
+        <div className="flex items-center gap-2 text-amber-200"><AlertTriangle size={18} /><p className="font-semibold">Published history warning</p></div>
+        <p className="mt-2 text-sm leading-6 text-[var(--color-github-muted)]">Only amend commits that have not been shared unless your team explicitly agrees to rewriting history. A published amend changes the commit ID and can disrupt other collaborators.</p>
       </div>
 
-      <h2 className="text-xl font-semibold mt-8">Un-stage a file</h2>
-      <CodeBlock code={`git restore --staged path/to/file\n# older syntax still works:\ngit reset HEAD path/to/file`} />
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Unstage without deleting your edits</h2>
+        <CodeBlock code={`git restore --staged path/to/file
+git status`} />
+        <p className="text-sm leading-6 text-[var(--color-github-muted)]">The file remains in your working tree; it is simply removed from the staging area. Review <code>git diff</code> and stage only the changes you intend to commit.</p>
+      </section>
 
-      <h2 className="text-xl font-semibold mt-8">Discard local changes</h2>
-      <CodeBlock
-        code={`# Discard unstaged changes in a file\ngit restore path/to/file\n\n# Discard everything (dangerous!)\ngit restore .`}
-      />
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Discard edits only when you are sure</h2>
+        <CodeBlock title="Destructive examples" code={`# Discard unstaged edits in one file
+git restore path/to/file
+
+# Discard all unstaged tracked-file edits
+git restore .`} />
+        <p className="text-sm leading-6 text-[var(--color-github-muted)]">These commands discard local edits that have not been committed. Check <code>git status</code> and save anything important before running them. They do not remove untracked files.</p>
+      </section>
+
+      <Link to="/git-reset" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-4 py-3 text-sm font-semibold hover:border-emerald-400/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-300">Learn about reset <ArrowRight size={16} /></Link>
     </SectionLayout>
   )
 }
