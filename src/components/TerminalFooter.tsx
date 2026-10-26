@@ -7,7 +7,7 @@ import InteractiveTerminal from './InteractiveTerminal'
  * Mounted once in App (outside <Routes>) so history and output
  * persist when the user navigates between pages.
  *
- * Not fixed — lives in the flex column so main content fills
+ * Not fixed; lives in the flex column so main content fills
  * remaining height and nothing overlaps or needs magic padding.
  */
 export default function TerminalFooter() {
