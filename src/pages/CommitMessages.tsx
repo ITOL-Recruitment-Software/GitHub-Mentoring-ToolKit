@@ -5,7 +5,7 @@ export default function CommitMessages() {
   return (
     <SectionLayout
       title="Professional Commit Messages"
-      subtitle="Conventional Commits — the industry standard for clear history."
+      subtitle="Conventional Commits, the industry standard for clear history."
     >
       <p className="text-[var(--color-github-muted)]">
         Conventional Commits give your history structure. Tools can automatically generate changelogs
