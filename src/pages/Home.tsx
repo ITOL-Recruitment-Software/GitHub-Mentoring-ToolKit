@@ -159,7 +159,7 @@ export default function Home() {
           <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[var(--color-github-border)] p-5 sm:p-6">
             <div>
               <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300"><Play size={14} /> Interactive starter lab</p>
-              <h2 className="mt-2 text-xl font-semibold text-[var(--color-github-text)] sm:text-2xl">Try a Git workflow — right here</h2>
+              <h2 className="mt-2 text-xl font-semibold text-[var(--color-github-text)] sm:text-2xl">Try a Git workflow right here</h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-github-muted)]">Step through a tiny project from folder to shareable change. This is a safe visual simulation: it shows commands and progress without running anything on your computer.</p>
             </div>
             <button type="button" onClick={() => setDemoStep(0)} className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-github-border)] px-3 py-2 text-xs font-medium text-[var(--color-github-muted)] transition hover:border-emerald-400/40 hover:text-[var(--color-github-text)]"><RotateCcw size={13} /> Reset demo</button>
