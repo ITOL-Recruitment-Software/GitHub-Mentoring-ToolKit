@@ -7,7 +7,7 @@ export default function PRMergePractice() {
   return (
     <SectionLayout
       title="PR & Merge Practice"
-      subtitle="GitHub website flow only — open a PR, pass checks, approve, and merge."
+      subtitle="Use the GitHub website flow to open a PR, pass checks, get approval, and merge."
     >
       <p className="text-[var(--color-github-muted)] leading-relaxed">
         Use this in mentoring to demonstrate Compare → Create PR → Checks → Approve → Merge without leaving a browser-style UI. No Git Bash on this page.
