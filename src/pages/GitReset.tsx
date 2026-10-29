@@ -1,44 +1,53 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, RotateCcw } from 'lucide-react'
+import { ArrowRight, AlertTriangle } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
 import CodeBlock from '../components/CodeBlock'
+import Callout from '../components/Callout'
 
 export default function GitReset() {
   return (
-    <SectionLayout title="Rewriting History with Git Reset" subtitle="Move the current branch pointer and optionally change the staging area and working tree.">
-      <section className="rounded-xl border border-[var(--color-github-border)] bg-[#0d1117] p-5 sm:p-6">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300"><RotateCcw size={20} /></div>
-          <div><h2 className="font-semibold">Reset changes local history</h2><p className="mt-1 text-sm text-[var(--color-github-muted)]">Use it carefully, especially if the commits have already been pushed.</p></div>
+    <SectionLayout
+      title="Rewriting History with Git Reset"
+      subtitle="git reset moves the current branch pointer. Used carefully it is a powerful way to undo local commits; used carelessly it can discard work."
+      eyebrow="Project 4 · Local Repository · 1.6.3"
+    >
+      <Callout variant="warning" title="Only reset commits that have not been pushed">
+        Once a commit is on a shared remote branch, rewriting history with reset (or rebase) can cause problems for everyone
+        else. Prefer <code className="inline-code">git revert</code> for published commits.
+      </Callout>
+
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Three modes</h2>
+        <div className="space-y-3">
+          {[
+            { flag: '--soft', desc: 'Move the branch pointer but keep changes staged.' },
+            { flag: '--mixed (default)', desc: 'Move the pointer and unstage the changes, but leave the files in the working directory.' },
+            { flag: '--hard', desc: 'Move the pointer and discard the changes completely. Use with extreme care.' },
+          ].map((m) => (
+            <div key={m.flag} className="lesson-card p-4">
+              <code className="text-sm font-semibold text-emerald-300">{m.flag}</code>
+              <p className="mt-1 text-sm text-[var(--color-github-muted)]">{m.desc}</p>
+            </div>
+          ))}
         </div>
-        <p className="mt-4 text-sm leading-6 text-[var(--color-github-muted)]">Reset moves the current branch reference to another commit. The mode controls what happens to the staging area and working files. Before using reset, run <code>git status</code> and make sure you understand which work is committed and which is not.</p>
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Understand the three modes</h2>
-        <div className="grid gap-3 md:grid-cols-3">
-          <article className="rounded-lg border border-[var(--color-github-border)] bg-[#161b22] p-4"><h3 className="font-semibold text-emerald-300">--soft</h3><p className="mt-2 text-sm leading-6 text-[var(--color-github-muted)]">Moves the branch pointer. Changes from the removed commits remain staged.</p></article>
-          <article className="rounded-lg border border-[var(--color-github-border)] bg-[#161b22] p-4"><h3 className="font-semibold text-sky-300">--mixed</h3><p className="mt-2 text-sm leading-6 text-[var(--color-github-muted)]">The default mode. Moves the branch and resets the index, while keeping working-tree edits.</p></article>
-          <article className="rounded-lg border border-amber-400/25 bg-[#161b22] p-4"><h3 className="font-semibold text-amber-200">--hard</h3><p className="mt-2 text-sm leading-6 text-[var(--color-github-muted)]">Moves the branch, index, and working tree. Uncommitted changes can be discarded.</p></article>
-        </div>
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Common examples</h2>
+        <CodeBlock title="Undo the last commit, keep changes staged" language="bash" code={`git reset --soft HEAD~1`} />
+        <CodeBlock title="Undo the last commit, keep changes unstaged" language="bash" code={`git reset HEAD~1`} />
+        <CodeBlock title="Discard the last commit and its changes (dangerous)" language="bash" code={`git reset --hard HEAD~1`} />
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Practice with a known target</h2>
-        <CodeBlock title="Inspect before resetting" code={`git status
-git log --oneline --decorate -5
-git reset --soft HEAD~1
-git status
-git reflog`} />
-        <p className="text-sm leading-6 text-[var(--color-github-muted)]">This example moves the current branch back one commit while keeping that commit's changes staged. Try it only in a practice repository, and inspect the status after each command.</p>
-      </section>
-
-      <div className="rounded-lg border border-amber-400/25 bg-amber-400/[0.06] p-4">
-        <p className="font-semibold text-amber-200">Recovery is not guaranteed</p>
-        <p className="mt-1 text-sm leading-6 text-[var(--color-github-muted)]">The reflog can help locate recently moved local references, but it expires and is not a backup. Do not rely on it to recover uncommitted files discarded by <code>--hard</code>. For already-shared commits, prefer <code>git revert</code>.</p>
+      <div className="flex flex-wrap gap-3 pt-2">
+        <Link to="/cherry-pick" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-github-accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-github-accent-hover)]">
+          Next: Cherry Picking
+          <ArrowRight size={15} />
+        </Link>
+        <Link to="/fixing-commits" className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-5 py-2.5 text-sm font-medium transition hover:bg-white/[0.03]">
+          Back to Fixing Commits
+        </Link>
       </div>
-
-      <Link to="/reverting" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-4 py-3 text-sm font-semibold hover:border-emerald-400/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-300">Compare with git revert <ArrowRight size={16} /></Link>
     </SectionLayout>
   )
 }

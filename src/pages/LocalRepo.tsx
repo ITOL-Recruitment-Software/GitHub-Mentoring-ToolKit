@@ -1,53 +1,48 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, FolderGit2 } from 'lucide-react'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
-import Terminal from '../components/Terminal'
 import CodeBlock from '../components/CodeBlock'
+import Callout from '../components/Callout'
 
 export default function LocalRepo() {
   return (
-    <SectionLayout title="Create a Local Repository" subtitle="Start tracking a project with Git, then connect it to a remote repository when you are ready to share.">
-      <section className="rounded-xl border border-[var(--color-github-border)] bg-[#0d1117] p-5 sm:p-6">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300"><FolderGit2 size={20} /></div>
-          <div><h2 className="font-semibold">Local first, remote when ready</h2><p className="mt-1 text-sm text-[var(--color-github-muted)]">Git can track history on your computer before a GitHub repository exists.</p></div>
-        </div>
+    <SectionLayout
+      title="Create a Local Repo"
+      subtitle="You can start a brand-new Git repository on your machine without cloning anything from GitHub first."
+      eyebrow="Project 4 · Local Repository · 1.6.1"
+    >
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Initialise a new repository</h2>
+        <CodeBlock title="Create and enter a project folder" language="bash" code={`mkdir my-project\ncd my-project\ngit init`} />
+        <p className="text-sm text-[var(--color-github-muted)]">
+          Git creates a hidden <code className="inline-code">.git</code> directory that stores the entire history of the project.
+        </p>
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Create and commit a project</h2>
-        <Terminal lines={[
-          { type: 'command', text: 'mkdir my-project && cd my-project' },
-          { type: 'command', text: 'git init' },
-          { type: 'output', text: 'Initialized empty Git repository in .../my-project/.git/' },
-          { type: 'command', text: 'echo "# My Project" > README.md' },
-          { type: 'command', text: 'git status' },
-          { type: 'command', text: 'git add README.md' },
-          { type: 'command', text: 'git commit -m "Add project README"' },
-        ]} />
-        <p className="text-sm leading-6 text-[var(--color-github-muted)]">The terminal above is a demonstration. Run the commands in your own Git Bash or Terminal to create a real local repository.</p>
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Make the first commit</h2>
+        <CodeBlock title="Add a README and commit" language="bash" code={`echo "# My Project" > README.md\ngit add README.md\ngit commit -m "Initial commit"`} />
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Connect to GitHub</h2>
-        <ol className="ml-5 list-decimal space-y-2 text-sm leading-6 text-[var(--color-github-muted)]">
-          <li>Create an empty repository on GitHub. If you already have a local README, do not initialise the remote with a second README.</li>
-          <li>Copy the repository's HTTPS or SSH URL.</li>
-          <li>Add the remote and push your current branch.</li>
-        </ol>
-        <CodeBlock title="Publish the first branch" code={`git remote add origin https://github.com/YOUR-USERNAME/my-project.git
-git branch -M main
-git push -u origin main
-git remote -v`} />
-        <p className="text-sm leading-6 text-[var(--color-github-muted)]">Replace the example URL with your own repository. GitHub may ask you to authenticate with a credential manager, token, or SSH key depending on your setup.</p>
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Connect to GitHub later</h2>
+        <CodeBlock title="Add a remote and push" language="bash" code={`# After creating an empty repo on GitHub\ngit remote add origin https://github.com/YOUR_USER/my-project.git\ngit push -u origin main`} />
       </section>
 
-      <div className="rounded-lg border border-sky-400/20 bg-sky-400/[0.06] p-4">
-        <p className="font-semibold text-sky-200">Remote is not the same as backup</p>
-        <p className="mt-1 text-sm leading-6 text-[var(--color-github-muted)]">Pushing shares commits with GitHub, but a remote does not protect uncommitted files or replace a proper backup. Commit meaningful work and follow your organisation's backup and access policies.</p>
+      <Callout variant="tip" title="Default branch name">
+        If your Git is recent, <code className="inline-code">git init</code> already creates a branch called{' '}
+        <code className="inline-code">main</code>. Older versions may still use <code className="inline-code">master</code>.
+      </Callout>
+
+      <div className="flex flex-wrap gap-3 pt-2">
+        <Link to="/fixing-commits" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-github-accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-github-accent-hover)]">
+          Next: Fixing Commit Mistakes
+          <ArrowRight size={15} />
+        </Link>
+        <Link to="/workflow-discussion" className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-5 py-2.5 text-sm font-medium transition hover:bg-white/[0.03]">
+          Back to Workflow Discussion
+        </Link>
       </div>
-
-      <Link to="/working-locally" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-4 py-3 text-sm font-semibold hover:border-emerald-400/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-300">Continue working locally <ArrowRight size={16} /></Link>
     </SectionLayout>
   )
 }

@@ -1,37 +1,64 @@
+import { Link } from 'react-router-dom'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
-import CodeBlock from '../components/CodeBlock'
+import Callout from '../components/Callout'
 
 export default function EditingOnGithub() {
   return (
     <SectionLayout
       title="Editing on GitHub"
-      subtitle="Make quick changes directly in the browser without cloning."
+      subtitle="You can make small changes directly in the browser without cloning the repository. This is perfect for typos, documentation updates, and quick fixes."
+      eyebrow="Project 1 · Caption This · 1.3.5"
     >
-      <h2 className="text-xl font-semibold">When to edit on GitHub</h2>
-      <p className="text-[var(--color-github-muted)]">
-        The web editor is perfect for small documentation fixes, typos, or
-        one-line config changes. For anything larger, prefer a local clone.
-      </p>
+      <Callout variant="note" title="When to edit on GitHub">
+        The web editor is ideal for small, self-contained changes. For larger features or multi-file work you should still
+        use a local clone and a proper branch.
+      </Callout>
 
-      <h2 className="text-xl font-semibold mt-8">How it works</h2>
-      <ol className="list-decimal list-inside space-y-2 text-[var(--color-github-muted)]">
-        <li>Open the file on GitHub and click the pencil icon.</li>
-        <li>Make your edits in the browser editor.</li>
-        <li>Scroll down, write a commit message, and choose "Commit directly" or "Create a new branch + PR".</li>
-      </ol>
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Edit a single file</h2>
+        <ol className="space-y-3 text-sm text-[var(--color-github-muted)]">
+          <li className="flex gap-3">
+            <span className="step-badge bg-emerald-400/15 text-emerald-300">1</span>
+            <span>Navigate to the file in the repository on GitHub.</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="step-badge bg-emerald-400/15 text-emerald-300">2</span>
+            <span>Click the pencil icon (Edit this file).</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="step-badge bg-emerald-400/15 text-emerald-300">3</span>
+            <span>Make your changes in the browser editor.</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="step-badge bg-emerald-400/15 text-emerald-300">4</span>
+            <span>Scroll down, write a commit message, and choose to commit directly to a branch or open a pull request.</span>
+          </li>
+        </ol>
+      </section>
 
-      <div className="p-4 rounded-lg border border-[var(--color-github-yellow)]/40 bg-[#161b22] my-4">
-        <p className="text-sm text-[var(--color-github-yellow)] font-medium">Tip</p>
-        <p className="text-sm text-[var(--color-github-muted)] mt-1">
-          Always create a new branch when editing on main/master if the repository
-          has branch protection rules.
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Create a new file</h2>
+        <p className="text-sm text-[var(--color-github-muted)]">
+          On the repository Code tab, click “Add file” → “Create new file”. Give it a name, add content, and commit
+          (preferably to a new branch so you can open a pull request).
         </p>
-      </div>
+      </section>
 
-      <CodeBlock
-        title="Equivalent local workflow"
-        code={`git checkout -b fix/typo\n# edit file\ngit add .\ngit commit -m "fix: correct typo in README"\ngit push -u origin fix/typo`}
-      />
+      <Callout variant="tip" title="Branch protection">
+        If the default branch is protected, GitHub will force you to create a new branch and open a pull request.
+        That is exactly the GitHub Flow in action.
+      </Callout>
+
+      <div className="flex flex-wrap gap-3 pt-2">
+        <Link to="/merge" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-github-accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-github-accent-hover)]">
+          Next: Merging Pull Requests
+          <ArrowRight size={15} />
+        </Link>
+        <Link to="/collaboration" className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-5 py-2.5 text-sm font-medium transition hover:bg-white/[0.03]">
+          Back to Collaboration
+        </Link>
+      </div>
     </SectionLayout>
   )
 }
