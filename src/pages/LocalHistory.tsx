@@ -1,32 +1,43 @@
+import { Link } from 'react-router-dom'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
 import CodeBlock from '../components/CodeBlock'
-import Terminal from '../components/Terminal'
+import Callout from '../components/Callout'
 
 export default function LocalHistory() {
   return (
     <SectionLayout
       title="Local History (git log)"
-      subtitle="Inspect the commit history of your repository."
+      subtitle="Every commit is a snapshot. Learning to read the history is essential for understanding how a project evolved and for recovering from mistakes."
+      eyebrow="Project 1 · Caption This · 1.3.7"
     >
-      <h2 className="text-xl font-semibold">Basic history</h2>
-      <Terminal
-        lines={[
-          { type: 'command', text: 'git log --oneline -10' },
-          { type: 'output', text: 'a1b2c3d (HEAD -> main) Add feature X' },
-          { type: 'output', text: 'e4f5g6h Fix bug in parser' },
-          { type: 'output', text: 'i7j8k9l Initial commit' },
-        ]}
-      />
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Basic log</h2>
+        <CodeBlock title="Full history" language="bash" code={`git log`} />
+        <CodeBlock title="Compact one-line view" language="bash" code={`git log --oneline`} />
+      </section>
 
-      <h2 className="text-xl font-semibold mt-8">Useful variants</h2>
-      <CodeBlock
-        code={`# Graph with branches and tags\ngit log --oneline --graph --decorate --all\n\n# Show only commits that touched a file\ngit log -- path/to/file\n\n# Search commit messages\ngit log --grep="fix"\n\n# Pretty custom format\ngit log --pretty=format:"%h %an %s" -5`}
-      />
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Useful variations</h2>
+        <CodeBlock title="Graph of all branches" language="bash" code={`git log --oneline --graph --decorate --all`} />
+        <CodeBlock title="Last N commits" language="bash" code={`git log -5 --oneline`} />
+        <CodeBlock title="Who changed a file" language="bash" code={`git log -- path/to/file`} />
+      </section>
 
-      <p className="text-[var(--color-github-muted)] mt-4">
-        Understanding <code>git log</code> is essential before you start
-        rewriting history or bisecting.
-      </p>
+      <Callout variant="tip" title="Pretty formats">
+        You can customise the output with <code className="inline-code">--pretty=format:"..."</code>. Many teams define an alias
+        that shows a clean graph they like.
+      </Callout>
+
+      <div className="flex flex-wrap gap-3 pt-2">
+        <Link to="/aliases" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-github-accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-github-accent-hover)]">
+          Next: Git Aliases
+          <ArrowRight size={15} />
+        </Link>
+        <Link to="/merge" className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-5 py-2.5 text-sm font-medium transition hover:bg-white/[0.03]">
+          Back to Merging
+        </Link>
+      </div>
     </SectionLayout>
   )
 }
