@@ -1,55 +1,51 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, GitCompare } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
 import CodeBlock from '../components/CodeBlock'
+import Callout from '../components/Callout'
 
 export default function MergeStrategies() {
   return (
-    <SectionLayout title="Merge Strategies & Rebase" subtitle="Understand how Git combines lines of work and when to preserve or replay commits.">
-      <div className="grid gap-4 md:grid-cols-2">
-        <article className="rounded-xl border border-[var(--color-github-border)] bg-[#161b22] p-5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300"><GitCompare size={20} /></div>
-          <h2 className="mt-4 text-lg font-semibold">Merge</h2>
-          <p className="mt-2 text-sm leading-6 text-[var(--color-github-muted)]">Combines two histories. A fast-forward merge moves the branch pointer when no divergent history needs joining; a three-way merge can create a merge commit with both parents.</p>
-        </article>
-        <article className="rounded-xl border border-[var(--color-github-border)] bg-[#161b22] p-5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-400/10 text-sky-300"><GitCompare size={20} /></div>
-          <h2 className="mt-4 text-lg font-semibold">Rebase</h2>
-          <p className="mt-2 text-sm leading-6 text-[var(--color-github-muted)]">Replays your commits on top of a new base, creating new commit IDs. This can make a feature branch easier to follow, but it rewrites the branch's commit history.</p>
-        </article>
-      </div>
-
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Update a feature branch with main</h2>
-        <CodeBlock title="Rebase workflow" code={`git status
-git switch feature/my-change
-git fetch origin
-git rebase origin/main
-# resolve conflicts if Git pauses
-git add path/to/resolved-file
-git rebase --continue`} />
-        <p className="text-sm leading-6 text-[var(--color-github-muted)]">If you need to abandon the rebase, use <code>git rebase --abort</code>. Only stage the files you have resolved, and run your checks before continuing with the work.</p>
+    <SectionLayout
+      title="Merge Strategies"
+      subtitle="Git and GitHub offer several ways to combine branches. Choosing the right strategy keeps history clear and collaboration smooth."
+      eyebrow="Project 4 · Local Repository · 1.6.5"
+    >
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Common strategies</h2>
+        <div className="space-y-3">
+          {[
+            { name: 'Merge commit', desc: 'Creates a new commit with two parents. Preserves exact branch history.' },
+            { name: 'Fast-forward', desc: 'Simply moves the branch pointer forward when possible. No extra commit.' },
+            { name: 'Squash', desc: 'Combines all commits from the feature branch into a single commit on the target.' },
+            { name: 'Rebase', desc: 'Replays commits on top of the target branch, producing a linear history.' },
+          ].map((s) => (
+            <div key={s.name} className="lesson-card p-4">
+              <h3 className="text-sm font-semibold">{s.name}</h3>
+              <p className="mt-1 text-sm text-[var(--color-github-muted)]">{s.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Choose how to merge</h2>
-        <CodeBlock title="Fast-forward or explicit merge commit" code={`git switch main
-git merge --ff-only feature/my-change
-# or, if your team wants a merge commit:
-git merge --no-ff feature/my-change`} />
-        <ul className="ml-5 list-disc space-y-2 text-sm leading-6 text-[var(--color-github-muted)]">
-          <li><strong className="text-[var(--color-github-text)]">Fast-forward:</strong> no merge commit is needed when the target can move forward directly.</li>
-          <li><strong className="text-[var(--color-github-text)]">Three-way merge:</strong> Git combines changes since the common ancestor; conflicts may need manual resolution.</li>
-          <li><strong className="text-[var(--color-github-text)]">Squash merge:</strong> GitHub can combine a pull request's changes into one commit on the base branch.</li>
-        </ul>
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Command-line examples</h2>
+        <CodeBlock title="Explicit merge strategies" language="bash" code={`git merge --no-ff feature/branch   # force a merge commit\ngit merge --ff-only feature/branch # only allow fast-forward\ngit merge --squash feature/branch  # stage a single combined change`} />
       </section>
 
-      <div className="rounded-lg border border-amber-400/25 bg-amber-400/[0.06] p-4">
-        <p className="font-semibold text-amber-200">Shared-branch safety</p>
-        <p className="mt-1 text-sm leading-6 text-[var(--color-github-muted)]">Avoid rebasing commits that other people already depend on unless your team has agreed on the recovery plan. For published shared history, prefer collaboration-friendly workflows and follow your repository's rules.</p>
-      </div>
+      <Callout variant="tip" title="Team convention">
+        Agree on one primary strategy (many teams prefer squash-and-merge for feature branches) and document it in CONTRIBUTING.md.
+      </Callout>
 
-      <Link to="/protected-branches" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-4 py-3 text-sm font-semibold hover:border-emerald-400/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-300">Learn about branch protection <ArrowRight size={16} /></Link>
+      <div className="flex flex-wrap gap-3 pt-2">
+        <Link to="/readme" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-github-accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-github-accent-hover)]">
+          Next: README files
+          <ArrowRight size={15} />
+        </Link>
+        <Link to="/cherry-pick" className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-5 py-2.5 text-sm font-medium transition hover:bg-white/[0.03]">
+          Back to Cherry Pick
+        </Link>
+      </div>
     </SectionLayout>
   )
 }
