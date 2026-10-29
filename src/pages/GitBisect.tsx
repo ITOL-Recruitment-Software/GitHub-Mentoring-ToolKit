@@ -1,46 +1,41 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Search } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import SectionLayout from '../components/SectionLayout'
 import CodeBlock from '../components/CodeBlock'
+import Callout from '../components/Callout'
 
 export default function GitBisect() {
   return (
-    <SectionLayout title="Git Bisect" subtitle="Use a binary search through commit history to identify when a regression was introduced.">
-      <section className="rounded-xl border border-[var(--color-github-border)] bg-[#0d1117] p-5 sm:p-6">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300"><Search size={20} /></div>
-          <div><h2 className="font-semibold">Why binary search helps</h2><p className="mt-1 text-sm text-[var(--color-github-muted)]">Test a midpoint instead of checking every commit one by one.</p></div>
-        </div>
-        <p className="mt-4 text-sm leading-6 text-[var(--color-github-muted)]">You need one commit known to be good and one known to be bad. Git checks out a commit between them; you test it and tell Git which side it belongs on. Repeat until Git identifies the first bad commit.</p>
+    <SectionLayout
+      title="Finding Bugs with Git Bisect"
+      subtitle="When a bug appears, git bisect performs a binary search through history to find the commit that introduced it."
+      eyebrow="Project 3 · GitHub Games · 1.5.3"
+    >
+      <Callout variant="note" title="How it works">
+        You mark a known good commit and a known bad commit. Git checks out the midpoint; you test and tell Git whether
+        that commit is good or bad. It repeats until it isolates the first bad commit.
+      </Callout>
+
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold">Basic session</h2>
+        <CodeBlock title="Start and mark endpoints" language="bash" code={`git bisect start\ngit bisect bad                 # current commit is broken\ngit bisect good v1.2.0         # this tag (or commit) was fine`} />
+        <CodeBlock title="After testing each step" language="bash" code={`git bisect good    # or\ngit bisect bad`} />
+        <CodeBlock title="When finished" language="bash" code={`git bisect reset`} />
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Manual bisect</h2>
-        <CodeBlock title="Start, test, and finish" code={`git bisect start
-git bisect bad HEAD
-git bisect good <known-good-sha>
-# test the checked-out version
-git bisect good
-# or use: git bisect bad
-git bisect log
-git bisect reset`} />
-        <p className="text-sm leading-6 text-[var(--color-github-muted)]">After each test, mark the current commit <code>good</code> or <code>bad</code>. Repeat until Git identifies the first bad commit. Use <code>git bisect reset</code> at the end to return to your original branch.</p>
-      </section>
+      <Callout variant="tip" title="Automate with a script">
+        You can run <code className="inline-code">git bisect run ./test.sh</code> if you have a script that exits 0 for good and non-zero for bad.
+      </Callout>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Automate the test when possible</h2>
-        <CodeBlock title="Run a repeatable test command" code={`git bisect start HEAD <known-good-sha>
-git bisect run npm test
-git bisect reset`} />
-        <p className="text-sm leading-6 text-[var(--color-github-muted)]">Only use <code>git bisect run</code> when the test command reliably returns exit code 0 for good commits and non-zero for bad commits. Replace <code>npm test</code> with a test that actually exists and reproduces the bug in your project.</p>
-      </section>
-
-      <div className="rounded-lg border border-amber-400/25 bg-amber-400/[0.06] p-4">
-        <p className="font-semibold text-amber-200">Be careful with working changes</p>
-        <p className="mt-1 text-sm leading-6 text-[var(--color-github-muted)]">Commit or safely stash unrelated work before starting. During bisect, Git checks out historical snapshots, so your files may look different from the current branch.</p>
+      <div className="flex flex-wrap gap-3 pt-2">
+        <Link to="/reverting" className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-github-accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-github-accent-hover)]">
+          Next: Reverting Commits
+          <ArrowRight size={15} />
+        </Link>
+        <Link to="/protected-branches" className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-5 py-2.5 text-sm font-medium transition hover:bg-white/[0.03]">
+          Back to Protected Branches
+        </Link>
       </div>
-
-      <Link to="/local-history" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[var(--color-github-border)] px-4 py-3 text-sm font-semibold hover:border-emerald-400/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-300">Review Git history first <ArrowRight size={16} /></Link>
     </SectionLayout>
   )
 }
